@@ -1,0 +1,23 @@
+.header {
+    background: #000;
+    height: 82px;
+}
+
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.header__logo {
+    margin: 0;
+    padding-left: 25px;
+}
+
+.header__logo-img {
+    width: 370px;
+    height: 36px;
+    display: block;
+}
+
