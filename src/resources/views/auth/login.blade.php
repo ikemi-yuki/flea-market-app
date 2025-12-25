@@ -18,9 +18,9 @@
                 <div class="form__group-content">
                     <input class="form__input" type="email" name="email" value="{{ old('email') }}">
                     <div class="form__error">
-                        <!-- @error('email')
+                        @error('email')
                             {{ $message }}
-                        @enderror -->
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -31,9 +31,9 @@
                 <div class="form__group-content">
                     <input class="form__input" type="password" name="password">
                     <div class="form__error">
-                        <!-- @error('password')
+                        @error('password')
                             {{ $message }}
-                        @enderror -->
+                        @enderror
                     </div>
                 </div>
             </div>
