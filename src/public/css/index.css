@@ -1,0 +1,48 @@
+.tabs {
+    height: 47px;
+    display: flex;
+    gap: 52px;
+    border-bottom: 2px solid #5f5f5f;
+    margin-top: 50px;
+    padding-left: 129px;
+}
+
+.item__tab {
+    width: 155px;
+    height: 40px;
+    text-align: right;
+    text-decoration: none;
+    color: #5f5f5f;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.item__tab--active {
+    width: 155px;
+    height: 40px;
+    text-align: right;
+    text-decoration: none;
+    color: #ff0000;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.items {
+    column-count: 4;
+    width: 90%;
+    margin: 80px auto;
+}
+
+.item-card {
+    width: 290px;
+    height: 320px;
+    break-inside: avoid;
+}
+
+.item-card__img {
+    width: 100%;
+}
+
+.item-card__name {
+    font-size: 25px;
+}

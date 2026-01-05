@@ -4,6 +4,8 @@
 }
 
 .header__content {
+    max-width: 1540px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,3 +23,31 @@
     display: block;
 }
 
+.search-form__item {
+    width: 500px;
+    height: 50px;
+    padding-left: 20px;
+    font-size: 24px;
+}
+
+.header__link {
+    width: 135px;
+    height: 47px;
+    color: #fff;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.header__link--sell {
+    width: 100px;
+    height: 50px;
+    margin-right: 20px;
+    color: #000;
+    background: #fff;
+    font-size: 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
