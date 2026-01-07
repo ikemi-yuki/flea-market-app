@@ -49,11 +49,15 @@ class User extends Authenticatable
 
     public function likes()
     {
-        return $this->belongsToMany(Item::class, 'likes')
-                    ->withTimestamps();
+        return $this->hasMany(Like::class);
     }
 
     public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
+    public function addresses()
     {
         return $this->hasMany(Purchase::class);
     }

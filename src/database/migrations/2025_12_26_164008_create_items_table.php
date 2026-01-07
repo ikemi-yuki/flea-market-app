@@ -15,6 +15,7 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('image_path');
             $table->tinyInteger('condition')->comment('1:良好,2:目立った傷や汚れなし,3:やや傷や汚れあり,4:状態が悪い');

@@ -30,6 +30,11 @@
     font-size: 24px;
 }
 
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
 .header__link {
     width: 135px;
     height: 47px;
@@ -40,10 +45,21 @@
     cursor: pointer;
 }
 
+.header__link--login {
+    width: 135px;
+    height: 47px;
+    padding: 5px 0;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+}
+
 .header__link--sell {
     width: 100px;
     height: 50px;
-    margin-right: 20px;
+    margin: 0 20px;
     color: #000;
     background: #fff;
     font-size: 24px;

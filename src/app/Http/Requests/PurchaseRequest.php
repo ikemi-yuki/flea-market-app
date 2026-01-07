@@ -25,7 +25,7 @@ class PurchaseRequest extends FormRequest
     {
         return [
             'payment_method' => ['required'],
-            '' => ['required'],
+            'address_id' => ['required'],
         ];
     }
 }

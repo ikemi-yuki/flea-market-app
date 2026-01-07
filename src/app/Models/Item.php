@@ -25,10 +25,9 @@ class Item extends Model
                     ->withTimestamps();
     }
 
-    public function likedUsers()
+    public function likes()
     {
-        return $this->belongsToMany(User::class, 'likes')
-                    ->withTimestamps();
+        return $this->hasMany(Like::class);
     }
 
     public function comments()
@@ -39,5 +38,13 @@ class Item extends Model
     public function purchase()
     {
         return $this->hasOne(Purchase::class);
+    }
+
+    public function scopeKeywordSearch($query, $keyword)
+    {
+        if (!empty($keyword)) {
+            $query->where('name', 'like', '%' . $keyword . '%');
+        }
+        return $query;
     }
 }

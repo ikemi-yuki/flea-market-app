@@ -5,29 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Purchase extends Model
+class Like extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'item_id',
-        'address_id',
-        'payment_method'
+        'item_id'
     ];
-
-    public function item()
-    {
-        return $this->belongsTo(Item::class);
-    }
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function address()
+    public function item()
     {
-        return $this->belongsTo(Address::class);
+        return $this->belongsTo(Item::class);
     }
 }
