@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Item;
+use App\Models\User;
 
 class ItemsTableSeeder extends Seeder
 {
@@ -14,97 +15,134 @@ class ItemsTableSeeder extends Seeder
      */
     public function run()
     {
-        $params = [
+        $userIds = User::pluck('id');
+
+        $items = [
             [
-                'name' => '腕時計',
-                'category_id' => 4,
-                'price' => 15000,
-                'brand' => 'Rolax',
-                'description' => 'スタイリッシュなデザインのメンズ腕時計',
-                'image_path' => 'MensClock.jpg',
-                'condition' => 1
+                'item' => [
+                    'name' => '腕時計',
+                    'price' => 15000,
+                    'brand' => 'Rolax',
+                    'description' => 'スタイリッシュなデザインのメンズ腕時計',
+                    'image_path' => 'MensClock.jpg',
+                    'condition' => 1,
+                    'status' => rand(1, 2)
+                ],
+                'categories' => [1,5,12],
             ],
             [
-                'name' => 'HDD',
-                'category_id' => 2,
-                'price' => 5000,
-                'brand' => '西芝',
-                'description' => '高速で信頼性の高いハードディスク',
-                'image_path' => 'HDDHardDisk.jpg',
-                'condition' => 2
+                'item' => [
+                    'name' => 'HDD',
+                    'price' => 5000,
+                    'brand' => '西芝',
+                    'description' => '高速で信頼性の高いハードディスク',
+                    'image_path' => 'HDDHardDisk.jpg',
+                    'condition' => 2,
+                    'status' => rand(1, 2)
+                ],
+                'categories' => [2],
             ],
             [
-                'name' => '玉ねぎ3束',
-                'category_id' => 10,
-                'price' => 300,
-                'brand' => 'なし',
-                'description' => '新鮮な玉ねぎ3束のセット',
-                'image_path' => 'Onion.jpg',
-                'condition' => 3
+                'item' => [
+                    'name' => '玉ねぎ3束',
+                    'price' => 300,
+                    'brand' => 'なし',
+                    'description' => '新鮮な玉ねぎ3束のセット',
+                    'image_path' => 'Onion.jpg',
+                    'condition' => 3,
+                    'status' => rand(1, 2)
+                ],
+                'categories' => [10],
             ],
             [
-                'name' => '革靴',
-                'category_id' => 1,
-                'price' => 4000,
-                'description' => 'クラシックなデザインの革靴',
-                'image_path' => 'LeatherShoes.jpg',
-                'condition' => 4
+                'item' => [
+                    'name' => '革靴',
+                    'price' => 4000,
+                    'description' => 'クラシックなデザインの革靴',
+                    'image_path' => 'LeatherShoes.jpg',
+                    'condition' => 4,
+                    'status' => rand(1, 2)
+                ],
+                'categories' => [1],
             ],
             [
-                'name' => 'ノートPC',
-                'category_id' => 2,
-                'price' => 45000,
-                'description' => '高性能なノートパソコン',
-                'image_path' => 'Laptop.jpg',
-                'condition' => 1
+                'item' => [
+                    'name' => 'ノートPC',
+                    'price' => 45000,
+                    'description' => '高性能なノートパソコン',
+                    'image_path' => 'Laptop.jpg',
+                    'condition' => 1,
+                    'status' => rand(1, 2)
+                ],
+                'categories' => [2],
             ],
             [
-                'name' => 'マイク',
-                'category_id' => 2,
-                'price' => 8000,
-                'brand' => 'なし',
-                'description' => '高音質のレコーディング用マイク',
-                'image_path' => 'MusicMic.jpg',
-                'condition' => 2
+                'item' => [
+                    'name' => 'マイク',
+                    'price' => 8000,
+                    'brand' => 'なし',
+                    'description' => '高音質のレコーディング用マイク',
+                    'image_path' => 'MusicMic.jpg',
+                    'condition' => 2,
+                    'status' => rand(1, 2)
+                ],
+                'categories' => [2],
             ],
             [
-                'name' => 'ショルダーバッグ',
-                'category_id' => 1,
-                'price' => 3500,
-                'description' => 'おしゃれなショルダーバッグ',
-                'image_path' => 'shoulderBag.jpg',
-                'condition' => 3
+                'item' => [
+                    'name' => 'ショルダーバッグ',
+                    'price' => 3500,
+                    'description' => 'おしゃれなショルダーバッグ',
+                    'image_path' => 'shoulderBag.jpg',
+                    'condition' => 3,
+                    'status' => rand(1, 2)
+                ],
+                'categories' => [1],
             ],
             [
-                'name' => 'タンブラー',
-                'category_id' => 10,
-                'price' => 500,
-                'brand' => 'なし',
-                'description' => '使いやすいタンブラー',
-                'image_path' => 'Tumbler.jpg',
-                'condition' => 4
+                'item' => [
+                    'name' => 'タンブラー',
+                    'price' => 500,
+                    'brand' => 'なし',
+                    'description' => '使いやすいタンブラー',
+                    'image_path' => 'Tumbler.jpg',
+                    'condition' => 4,
+                    'status' => rand(1, 2)
+                ],
+                'categories' => [10],
             ],
             [
-                'name' => 'コーヒーミル',
-                'category_id' => 10,
-                'price' => 4000,
-                'brand' => 'Starbacks',
-                'description' => '手動のコーヒーミル',
-                'image_path' => 'CoffeeGrinder.jpg',
-                'condition' => 1
+                'item' => [
+                    'name' => 'コーヒーミル',
+                    'price' => 4000,
+                    'brand' => 'Starbacks',
+                    'description' => '手動のコーヒーミル',
+                    'image_path' => 'CoffeeGrinder.jpg',
+                    'condition' => 1,
+                    'status' => rand(1, 2)
+                ],
+                'categories' => [10],
             ],
             [
-                'name' => 'メイクセット',
-                'category_id' => 6,
-                'price' => 2500,
-                'description' => '便利なメイクアップセット',
-                'image_path' => 'MakeupSet.jpg',
-                'condition' => 2
+                'item' => [
+                    'name' => 'メイクセット',
+                    'price' => 2500,
+                    'description' => '便利なメイクアップセット',
+                    'image_path' => 'MakeupSet.jpg',
+                    'condition' => 2,
+                    'status' => rand(1, 2)
+                ],
+                'categories' => [6],
             ]
         ];
 
-        foreach ($params as $param) {
-            Item::create($param);
+        foreach ($items as $data) {
+            $item = Item::create(array_merge(
+                $data['item'],
+                ['user_id' => $userIds->random()]
+            ));
+
+            $item->categories()->attach($data['categories']);
         }
     }
 }
