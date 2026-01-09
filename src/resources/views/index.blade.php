@@ -45,13 +45,15 @@
         <div class="items">
             @foreach ($items as $item)
                 <div class="item-card">
-                    <img class="item-card__img" src="{{ asset('storage/' . $item['image']) }}" alt="{{ $item['name'] }}">
-                    <p class="item-card__name">
-                        {{ $item['name'] }}
-                    </p>
-                    @if ($item->status === 2)
-                        <span class="item-card__status">Sold</span>
-                    @endif
+                    <img class="item-card__img" src="{{ asset('storage/' . $item['image_path']) }}" alt="{{ $item['name'] }}">
+                    <div class="item-card__info">
+                        <p class="item-card__name">
+                            {{ $item['name'] }}
+                        </p>
+                        @if ($item->status === 2)
+                            <p class="item-card__status"> Sold</p>
+                        @endif
+                    </div>
                 </div>
             @endforeach
         </div>

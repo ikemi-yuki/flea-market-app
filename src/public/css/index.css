@@ -28,21 +28,37 @@
 }
 
 .items {
-    column-count: 4;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
     width: 90%;
     margin: 80px auto;
 }
 
 .item-card {
     width: 290px;
-    height: 320px;
     break-inside: avoid;
 }
 
 .item-card__img {
     width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.item-card__info {
+    display: flex;
+    justify-content: space-between;
 }
 
 .item-card__name {
     font-size: 25px;
+    margin-top: 5px;
+}
+
+.item-card__status {
+    font-size: 20px;
+    color: #ff0000;
+    margin-top: 5px;
 }
