@@ -21,13 +21,27 @@ class Item extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'item_category')
+        return $this->belongsToMany(
+            Category::class,
+            'item_category',
+            'item_id',
+            'category_id')
                     ->withTimestamps();
     }
 
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function isLikedBy($user)
+    {
+        if (!$user) {
+            return false;
+        }
+        return $this->likes()
+                    ->where('user_id', $user->id)
+                    ->exists();
     }
 
     public function comments()

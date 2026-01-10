@@ -15,3 +15,7 @@ use App\Http\Controllers\ItemController;
 */
 
 Route::get('/', [ItemController::class, 'index'])->name('items.index');
+
+Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('items.detail');
+
+Route::post('/item/{item_id}', [ItemController::class, 'like'])->name('items.like');
