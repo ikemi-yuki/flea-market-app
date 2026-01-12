@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\Category;
-use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -60,27 +59,5 @@ class ItemController extends Controller
                 :false;
 
         return view('item', compact('item','conditionText', 'likeCount', 'commentCount', 'isLiked'));
-    }
-
-    public function like($item_id)
-    {
-        $item = Item::findOrFail($item_id);
-        $user = auth()->user();
-
-        $liked = Like::where('user_id', $user->id)
-            ->where('item_id', $item->id)
-            ->exists();
-        
-        if ($liked) {
-            Like::where('user_id', $user->id)
-                ->where('item_id', $item->id)
-                ->delete();
-        } else {
-            Like::create([
-                'user_id' => $user->id,
-                'item_id' => $item->id,
-            ]);
-        }
-        return back();
     }
 }

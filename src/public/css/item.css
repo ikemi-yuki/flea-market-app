@@ -122,15 +122,12 @@
 }
 
 .info-table {
-
+    width: 100%;
+    margin-bottom: 40px;
 }
 
 .info-table__inner {
-
-}
-
-.info-table__row {
-
+    width: 100%;
 }
 
 .info-table__header {
@@ -160,26 +157,33 @@
     font-size: 36px;
     font-weight: bold;
     color: #5f5f5f;
+    margin: 30px 0;
 }
 
 .comment-user {
     display: flex;
+    align-items: center;
 }
 
 .comment-user__img {
     width: 70px;
     height: 70px;
-    border-radius: 50px;
+    border: 1px solid #d9d9d9;
+    border-radius: 50%;
 }
 
 .comment-user__name {
     font-size: 30px;
     font-weight: bold;
+    margin: 0;
+    margin-left: 18px;
 }
 
 .comment-content {
     background: #e5e5e5;
+    border-radius: 5px;
     width: 100%;
+    margin: 10px 0;
 }
 
 .comment-content__text {
@@ -189,6 +193,8 @@
 
 .comment-form__title {
     font-size: 28px;
+    font-weight: bold;
+    margin-top: 40px;
     margin-bottom: 5px;
 }
 

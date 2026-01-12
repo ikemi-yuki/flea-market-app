@@ -1,10 +1,22 @@
-@extends('layouts.app')
-
-@section('css')
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フリマアプリ</title>
+    <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-@endsection
-
-@section('content')
+</head>
+<body>
+    <header class="header">
+        <div class="header__content">
+            <h1 class=header__logo>
+                <img class="header__logo-img" src="{{ asset('images/COACHTECH-header-logo.png') }}" alt="COACHTECH">
+            </h1>
+        </div>
+    </header>
+    <main>
     <div class="login-form__content">
         <div class="login-form__header">
             <h2 class="login-form__header-title">ログイン</h2>
@@ -45,4 +57,3 @@
             <a class="register__button-submit" href="{{ route('register') }}">会員登録はこちら</a>
         </div>
     </div>
-@endsection

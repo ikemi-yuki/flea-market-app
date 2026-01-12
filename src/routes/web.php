@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +21,15 @@ Route::get('/', [ItemController::class, 'index'])->name('items.index');
 
 Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('items.detail');
 
-Route::post('/item/{item_id}', [ItemController::class, 'like'])->name('items.like');
+Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('items.like');
+
+Route::middleware('auth')->group(function (){
+    Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])->name('items.comment');
+
+    Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
+    Route::post('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
+});
+
+
+

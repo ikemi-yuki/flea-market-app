@@ -59,6 +59,11 @@ class User extends Authenticatable
 
     public function addresses()
     {
-        return $this->hasMany(Purchase::class);
+        return $this->hasMany(Address::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

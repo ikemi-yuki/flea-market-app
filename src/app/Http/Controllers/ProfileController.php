@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Http\Controllers;
+use App\Http\Requests\ProfileRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
+class ProfileController extends Controller
+{
+    public function edit()
+    {
+        $user = Auth::user();
+
+        $profile = $user->profile;
+
+        return view('profile', compact('profile'));
+    }
+
+    public function update(ProfileRequest $request)
+    {
+        $user = auth()->user();
+
+        $path = null;
+
+        if ($request->hasFile('image')) {
+            $currentProfile = $user->profile;
+
+            if ($currentProfile && $currentProfile->icon_path) {
+                Storage::disk('public')->delete($currentProfile->icon_path);
+            }
+
+            $path = $request->file('image')->store('profile_icons', 'public');
+        }
+
+        $profile = $user->profile()->updateOrCreate(
+            ['user_id' => $user->id],
+            [
+                'name' => $request->name,
+                'post_code' => $request->post_code,
+                'address' => $request->address,
+                'building' => $request->building,
+                'icon_path' => $path ?? $user->profile?->icon_path,
+            ]
+        );
+
+        if ($profile->wasRecentlyCreated) {
+            return redirect()->route('items.index');
+        }
+
+        return redirect()->route('mypage.index');
+    }
+}
