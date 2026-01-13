@@ -5,6 +5,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MyPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', [ItemController::class, 'index'])->name('items.index');
+Route::get('/', [ItemController::class, 'index'])->name('items.index')->middleware('profile.completed');
 
 Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('items.detail');
 
@@ -25,6 +26,8 @@ Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('ite
 
 Route::middleware('auth')->group(function (){
     Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])->name('items.comment');
+
+    Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage.index');
 
     Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 

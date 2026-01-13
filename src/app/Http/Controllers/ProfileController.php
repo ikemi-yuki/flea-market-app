@@ -23,6 +23,8 @@ class ProfileController extends Controller
 
         $path = null;
 
+        $wasCompleted = $user->profile_completed;
+
         if ($request->hasFile('image')) {
             $currentProfile = $user->profile;
 
@@ -44,10 +46,16 @@ class ProfileController extends Controller
             ]
         );
 
-        if ($profile->wasRecentlyCreated) {
+        if (!$wasCompleted) {
+            $user->update([
+                'profile_completed' => true,
+            ]);
+        }
+
+        if (!$wasCompleted) {
             return redirect()->route('items.index');
         }
 
-        return redirect()->route('mypage.index');
+        return redirect()->route('profile.edit');
     }
 }

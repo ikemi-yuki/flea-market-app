@@ -22,20 +22,14 @@
                 @auth
                     <form class="header-nav__form" action="{{ route('logout') }}" method="post">
                         @csrf
-                        <input class="header__link" type="submit" value="ログアウト">
+                        <input class="header__link--logout" type="submit" value="ログアウト">
                     </form>
                 @endauth
                 @guest
-                    <a class="header__link--login" href="{{ route('login') }}">ログイン</a>
+                    <a class="header__link" href="{{ route('login') }}">ログイン</a>
                 @endguest
-                <form class="header-nav__form" action="/mypage" method="get">
-                    @csrf
-                    <input class="header__link" type="submit" value="マイページ">
-                </form>
-                <form class="header-nav__form" action="/sell" method="get">
-                    @csrf
-                    <input class="header__link--sell" type="submit" value="出品">
-                </form>
+                <a class="header__link" href="{{ route('mypage.index') }}">マイページ</a>
+                <a class="header__link--sell" href="/sell">出品</a>
             </div>
         </div>
     </header>

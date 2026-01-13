@@ -54,6 +54,11 @@ class Item extends Model
         return $this->hasOne(Purchase::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function scopeKeywordSearch($query, $keyword)
     {
         if (!empty($keyword)) {

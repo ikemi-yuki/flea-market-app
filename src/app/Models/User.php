@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_completed',
     ];
 
     /**
@@ -65,5 +66,10 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function sellingItems()
+    {
+        return $this->hasMany(Item::class, 'user_id');
     }
 }

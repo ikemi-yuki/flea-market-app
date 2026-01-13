@@ -57,7 +57,10 @@
             <h3 class="comment">コメント({{ $commentCount }})</h3>
             @foreach ($item->comments as $comment)
                 <div class="comment-user">
-                    <img class="comment-user__img" src="{{ asset('storage/' . ($comment->user->profile->icon_path ?? '')) }}" alt="プロフィール画像">
+                    @if ($comment->user->profile->icon_path)
+                        <img class="comment-user__img" src="{{ asset('storage/' . ($comment->user->profile->icon_path)) }}" alt="プロフィール画像">
+                    @endif
+                    <div class="profile__image-default"></div>
                     <p class="comment-user__name">{{ $comment->user->profile->name }}</p>
                 </div>
                 <div class="comment-content">

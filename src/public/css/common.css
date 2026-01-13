@@ -38,16 +38,6 @@
 .header__link {
     width: 135px;
     height: 47px;
-    color: #fff;
-    border: none;
-    background: transparent;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.header__link--login {
-    width: 135px;
-    height: 47px;
     padding: 5px 0;
     color: #fff;
     text-decoration: none;
@@ -56,11 +46,25 @@
     cursor: pointer;
 }
 
+.header__link--logout {
+    width: 135px;
+    height: 47px;
+    margin-right: 20px;
+    color: #fff;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+}
+
 .header__link--sell {
     width: 100px;
     height: 50px;
-    margin: 0 20px;
+    margin: 0 25px;
+    padding: 5px 0;
     color: #000;
+    text-decoration: none;
+    text-align: center;
     background: #fff;
     font-size: 24px;
     border: none;
