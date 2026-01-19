@@ -1,0 +1,241 @@
+.sell {
+    margin: 0 auto;
+    max-width: 1540px;
+    margin-top: 50px;
+}
+
+.sell__header {
+    margin-bottom: 45px;
+    text-align: center;
+}
+
+.sell__header-title {
+    font-size: 36px;
+}
+
+.sell__form {
+    margin: 0 auto;
+    width: 680px;
+    text-align: center;
+}
+
+.form-group {
+    width: 100%;
+    margin-top: 36px;
+}
+
+.form-label {
+    display: block;
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.form-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+    border: 1px dashed #5f5f5f;
+    border-radius: 4px;
+}
+
+.image-label {
+    display: block;
+    width: 165px;
+    border: 2px solid #ff5555;
+    border-radius: 10px;
+    color: #ff5555;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.form-group__title {
+    margin-top: 70px;
+    text-align: left;
+    font-size: 30px;
+    font-weight: bold;
+    color: #5f5f5f;
+    line-height: 2.0;
+    border-bottom: 1px solid #5f5f5f;
+}
+
+.category-group {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 36px;
+}
+
+.category-input {
+    display: none;
+}
+
+.category-tag {
+    display: inline-block;
+    padding: 3px 16px;
+    border: 2px solid #ff5655;
+    border-radius: 200px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #ff5655;
+}
+
+.category-input:checked + .category-tag {
+    background-color: #ff5655;
+    border: 2px solid #ff5655;
+    color: #fff;
+}
+
+.condition {
+    width: 100%;
+    text-align: left;
+    margin-top: 20px;
+    position: relative;
+}
+
+.condition__toggle {
+    display: none;
+}
+
+.condition__select {
+    display: block;
+    width: 100%;
+    height: 45px;
+    border: 1px solid #5f5f5f;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #5f5f5f;
+    padding: 10px 15px;
+    cursor: pointer;
+    position: relative;
+}
+
+.condition__select::after {
+    content: "▼";
+    position: absolute;
+    right: 15px;
+    font-size: 18px;
+    height: 20px;
+    color: #5f5f5f;
+}
+
+.condition__select-list {
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    padding: 6px;
+    border: 1px solid #5f5f5f;
+    border-top: none;
+    border-radius: 5px;
+    background: #636769;
+}
+
+.condition__toggle:checked ~ .condition__select-list {
+    display: block;
+    margin-top: -45px;
+}
+
+.condition__select-item {
+    display: none;
+}
+
+.condition__select-label {
+    display: block;
+    padding: 6px 40px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #eaeaea;
+    cursor: pointer;
+}
+
+.condition__select-item:checked + .condition__select-label {
+    background: #5599eb;
+    border-radius: 5px;
+    position: relative;
+}
+
+.condition__select-item:checked + .condition__select-label::before {
+    content: "✔";
+    position: absolute;
+    font-size: 15px;
+    font-weight: bold;
+    left: 10px;
+}
+
+.form-input {
+    width: 100%;
+    height: 45px;
+    margin-top: 7px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #5f5f5f;
+    border-radius: 4px;
+}
+
+.form-textarea {
+    width: 100%;
+    height: 125px;
+    margin-top: 7px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #5f5f5f;
+    border-radius: 4px;
+    resize: none;
+}
+
+.price-input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #5f5f5f;
+    border-radius: 4px;
+    padding: 0 12px;
+    margin-top: 7px;
+}
+
+.price-input__yen {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    margin-right: 10px;
+}
+
+.price-input__field {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 0;
+}
+
+.price-input__field::-webkit-outer-spin-button,
+.price-input__field::-webkit-inner-spin-button {
+    appearance:none;
+    margin: 0;
+}
+
+.form__button {
+    margin-top: 118px;
+    margin-bottom: 130px;
+}
+
+.form__button-submit {
+    padding: 10px;
+    width: 100%;
+    height: 60px;
+    border: none;
+    border-radius: 5px;
+    background: #ff5555;
+    color: #fff;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -1,6 +1,6 @@
 .profile {
     margin: 0 auto;
-    width: 680px;
+    max-width: 1540px;
     margin-top: 60px;
 }
 
@@ -15,14 +15,18 @@
 
 .profile__form {
     margin: 0 auto;
-    width: 100%;
+    width: 680px;
     text-align: center;
+}
+
+.form__group {
+    width: 100%;
+    margin-top: 50px;
 }
 
 .profile__image {
     display: flex;
     align-items: center;
-    margin-top: 50px;
 }
 
 .profile__image-preview {
@@ -53,10 +57,6 @@
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
-}
-
-.form__group {
-    margin-top: 50px;
 }
 
 .form__group-title {

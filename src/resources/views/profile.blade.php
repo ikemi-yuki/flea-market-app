@@ -11,15 +11,17 @@
         </div>
         <form class="profile__form" action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="profile__image">
-                @if ($profile && $profile->icon_path)
-                    <img class="profile__image-preview" src="{{ asset('storage/' . $profile->icon_path) }}" alt="プロフィール画像">
-                @else
-                    <div class="profile__image-default"></div>
-                @endif
-                <div class="profile__image-select">
-                    <label class="image__select-item" for="profile_image">画像を選択する</label>
-                    <input type="file" name="image" id="profile_image" hidden>
+            <div class="form__group">
+                <div class="profile__image">
+                    @if ($profile && $profile->icon_path)
+                        <img class="profile__image-preview" src="{{ asset('storage/' . $profile->icon_path) }}" alt="プロフィール画像">
+                    @else
+                        <div class="profile__image-default"></div>
+                    @endif
+                    <div class="profile__image-select">
+                        <label class="image__select-item" for="profile_image">画像を選択する</label>
+                        <input type="file" name="icon_path" id="profile_image" hidden>
+                    </div>
                 </div>
             </div>
             <div class="form__group">

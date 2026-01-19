@@ -25,14 +25,14 @@ class ProfileController extends Controller
 
         $wasCompleted = $user->profile_completed;
 
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('icon_path')) {
             $currentProfile = $user->profile;
 
             if ($currentProfile && $currentProfile->icon_path) {
                 Storage::disk('public')->delete($currentProfile->icon_path);
             }
 
-            $path = $request->file('image')->store('profile_icons', 'public');
+            $path = $request->file('icon_path')->store('profile_icons', 'public');
         }
 
         $profile = $user->profile()->updateOrCreate(

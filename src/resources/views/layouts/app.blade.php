@@ -29,7 +29,7 @@
                     <a class="header__link" href="{{ route('login') }}">ログイン</a>
                 @endguest
                 <a class="header__link" href="{{ route('mypage.index') }}">マイページ</a>
-                <a class="header__link--sell" href="/sell">出品</a>
+                <a class="header__link--sell" href="{{ route('sell.index') }}">出品</a>
             </div>
         </div>
     </header>

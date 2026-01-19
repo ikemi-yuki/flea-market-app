@@ -1,6 +1,6 @@
 .register-form__content {
     margin: 0 auto;
-    width: 680px;
+    max-width: 1540px;
     margin-top: 96px;
 }
 
@@ -15,11 +15,12 @@
 
 .form {
     margin: 0 auto;
-    width: 100%;
+    width: 680px;
     text-align: center;
 }
 
 .form__group {
+    width: 100%;
     margin-bottom: 5px;
 }
 

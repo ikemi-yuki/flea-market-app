@@ -6,6 +6,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\SellController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,10 @@ Route::middleware('auth')->group(function (){
     Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 
     Route::post('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::get('/sell', [SellController::class, 'index'])->name('sell.index');
+
+    Route::post('/sell', [SellController::class, 'store'])->name('sell.store');
 });
 
 
