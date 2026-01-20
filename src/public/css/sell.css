@@ -82,6 +82,7 @@
     border: 2px solid #ff5655;
     border-radius: 200px;
     font-size: 15px;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
     color: #ff5655;
@@ -152,9 +153,9 @@
     display: block;
     padding: 6px 40px;
     font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
     color: #eaeaea;
-    cursor: pointer;
 }
 
 .condition__select-item:checked + .condition__select-label {

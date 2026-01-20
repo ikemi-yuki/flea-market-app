@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\SellController;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,14 @@ Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('ite
 
 Route::middleware('auth')->group(function (){
     Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])->name('items.comment');
+
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])->name('purchase.show');
+
+    Route::post('/purchase/{item_id}', [PurchaseController::class, 'updatePayment'])->name('purchase.updatePayment');
+
+    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'edit'])->name('purchase.address.edit');
+
+    Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
 
     Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage.index');
 

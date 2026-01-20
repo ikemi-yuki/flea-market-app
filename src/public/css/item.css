@@ -6,11 +6,11 @@
     width: 90%;
 }
 
-.item-detail__img-wrapper {
+.item-detail__image-wrapper {
     width: 50%;
 }
 
-.item-detail__img {
+.item-detail__image {
     width: 600px;
     height: 600px;
     margin: 36px 45px;
@@ -38,7 +38,7 @@
     margin: 10px 0;
 }
 
-.item-detail__price--symbol,
+.item-detail__price--yen,
 .item-detail__price--tax {
     font-size: 30px;
 }
@@ -196,6 +196,7 @@
 
 .comment-content__text {
     font-size: 20px;
+    font-weight: 300;
     padding: 20px 15px;
 }
 

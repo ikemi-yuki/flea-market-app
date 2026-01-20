@@ -19,7 +19,7 @@
         <div class="items">
             @foreach ($items as $item)
                 <div class="item-card">
-                    <a href="{{ route('items.detail', $item->id) }}">
+                    <a href="{{ route('items.detail', ['item_id' => $item->id]) }}">
                         <img class="item-card__img" src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
                     </a>
                     <div class="item-card__info">
