@@ -8,7 +8,7 @@
     <div class="purchase">
         <div class="purchase-info">
             <div class="purchase-item">
-                <div class="purchase-item__image-wrapper">
+                <div class="purchase-item__image-container">
                     <img class="purchase-item__image" src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
                 </div>
                 <div class="purchase-item__content">
@@ -18,21 +18,29 @@
             </div>
             <div class="purchase-payment">
                 <h3 class="purchase-payment__title">支払方法</h3>
-                <form class="payment-form" action="{{ route('purchase.updatePayment', ['item_id' => $item->id]) }}" method="post">
-                    @csrf
-                    <div class="payment">
-                        <input class="payment__toggle" type="radio" id="payment-open" {{ session('payment_method') ? 'checked' : '' }}>
-                        <label class="payment__select" for="payment-open">
-                            <span class="payment__placeholder">選択してください</span>
-                        </label>
-                        <div class="payment__select-list">
-                            <input class="payment__select-item" type="radio" id="payment1" name="payment_method" value="1" {{ session('payment_method') == '1' ? 'checked' : '' }} onchange="this.form.submit()">
-                            <label class="payment__select-label" for="payment1">コンビニ払い</label>
-                            <input class="payment__select-item" type="radio" id="payment2" name="payment_method" value="2" {{ session('payment_method') == '2' ? 'checked' : '' }} onchange="this.form.submit()">
-                            <label class="payment__select-label" for="payment2">カード支払い</label>
-                        </div>
+                <div class="payment">
+                    <input class="payment-toggle" type="checkbox" id="payment-open" hidden>
+                    <label class="payment__select" for="payment-open">
+                        {{ session('payment_method') == 1 ? 'コンビニ払い' : '' }}
+                        {{ session('payment_method') == 2 ? 'カード支払い' : '' }}
+                        {{ !session('payment_method') ? '選択してください' : '' }}</label>
+                    <div class="payment__select-list">
+                        <form class="payment-form" action="{{ route('purchase.updatePayment', ['item_id' => $item->id]) }}" method="post">
+                            @csrf
+                            <div class="payment-form__button">
+                                <input type="hidden" name="payment_method" value="1">
+                                <button class="payment-form__button-submit  {{ session('payment_method') == 1 ? 'is-active' : '' }} " type="submit">コンビニ払い</button>
+                            </div>
+                        </form>
+                        <form class="payment-form" action="{{ route('purchase.updatePayment', ['item_id' => $item->id]) }}" method="post">
+                            @csrf
+                            <div class="payment-form__button">
+                                <input type="hidden" name="payment_method" value="2">
+                                <button class="payment-form__button-submit {{ session('payment_method') == 2 ? 'is-active' : '' }}" type="submit">カード支払い</button>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
             <div class="purchase-address">
                 <div class="purchase-address__wrapper">
@@ -51,21 +59,28 @@
             </div>
         </div>
         <div class="purchase-subtotal">
-            <div class="subtotal-table">
-                <table class="subtotal-table__inner">
-                    <tr class="subtotal-table__row">
-                        <th class="subtotal-table__header">商品代金</th>
-                        <td class="subtotal-table__price"><span class="subtotal-table__price--yen">￥</span>{{ number_format($item->price) }}</td>
-                    </tr>
-                    <tr class="subtotal-table__row">
-                        <th class="subtotal-table__header">支払方法</th>
-                        <td class="subtotal-table__payment">{{ session('payment_method', 1) == 1 ? 'コンビニ払い' : 'カード支払い' }}</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="form__button">
-                <button class="form__button-submit" type="submit">購入する</button>
-            </div>
+            <form action="{{ route('purchase.store', ['item_id' => $item->id]) }}" method="post">
+                @csrf
+                <div class="subtotal-table">
+                    <table class="subtotal-table__inner">
+                        <tr class="subtotal-table__row">
+                            <th class="subtotal-table__header">商品代金</th>
+                            <td class="subtotal-table__price"><span class="subtotal-table__price--yen">￥</span>{{ number_format($item->price) }}</td>
+                        </tr>
+                        <tr class="subtotal-table__row">
+                            <th class="subtotal-table__header">支払方法</th>
+                            <td class="subtotal-table__payment">{{ session('payment_method', 1) == 1 ? 'コンビニ払い' : 'カード支払い' }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <input type="hidden" name="payment_method" value="{{ session('payment_method') }}">
+                <input type="hidden" name="post_code" value="{{ $address['post_code'] }}">
+                <input type="hidden" name="address" value="{{ $address['address'] }}">
+                <input type="hidden" name="building" value="{{ $address['building'] ?? '' }}">
+                <div class="form__button">
+                    <button class="form__button-submit" type="submit">購入する</button>
+                </div>
+            </form>
         </div>
     </div>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Validator;
 
 class PurchaseRequest extends FormRequest
 {
@@ -25,7 +26,27 @@ class PurchaseRequest extends FormRequest
     {
         return [
             'payment_method' => ['required'],
-            'address_id' => ['required'],
         ];
+    }
+
+    public function withValidator(Validator $validator)
+    {
+        $validator->after(function ($validator) {
+            if (!session('purchase_address')) {
+                return;
+            }
+
+            $user = auth()->user();
+            if (
+                $user &&
+                $user->profile &&
+                $user->profile->post_code &&
+                $user->profile->address
+            ) {
+                return;
+            }
+
+            $validator->errors()->add('address', '');
+        });
     }
 }

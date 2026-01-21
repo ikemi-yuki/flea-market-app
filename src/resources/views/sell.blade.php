@@ -33,18 +33,21 @@
             <div class="form-group">
                 <label class="form-label">商品の状態</label>
                 <div class="condition">
-                    <input class="condition__toggle" type="radio" id="cond-open" {{ old('condition') ? 'checked' : '' }}>
-                    <label class="condition__select" for="cond-open">
-                        <span class="condition__placeholder">選択してください</span>
-                    </label>
+                    <input class="condition__toggle" type="checkbox" id="condition-open" hidden>
+                    <label class="condition__select" for="condition-open">
+                        {{ old('condition') == 1 ? '良好' : '' }}
+                        {{ old('condition') == 2 ? '目立った傷や汚れなし' : '' }}
+                        {{ old('condition') == 3 ? 'やや傷や汚れあり' : '' }}
+                        {{ old('condition') == 4 ? '状態が悪い' : '' }}
+                        {{ !old('condition') ? '選択してください' : '' }}</label>
                     <div class="condition__select-list">
-                        <input class="condition__select-item" type="radio" id="cond1" name="condition" value="1" {{ old('condition') == '1' ? 'checked' : '' }}>
-                        <label class="condition__select-label" for="cond1">良好</label>
-                        <input class="condition__select-item" type="radio" id="cond2" name="condition" value="2" {{ old('condition') == '2' ? 'checked' : '' }}>
-                        <label class="condition__select-label" for="cond2">目立った傷や汚れなし</label>
-                        <input class="condition__select-item" type="radio" id="cond3" name="condition" value="3" {{ old('condition') == '3' ? 'checked' : '' }}>
-                        <label class="condition__select-label" for="cond3">やや傷や汚れあり</label>
-                        <input class="condition__select-item" type="radio" id="cond4" name="condition" value="4" {{ old('condition') == '4' ? 'checked' : '' }}>
+                        <input class="condition__select-item" type="radio" id="condition1" name="condition" value="1" {{ old('condition') == '1' ? 'checked' : '' }}>
+                        <label class="condition__select-label" for="condition1">良好</label>
+                        <input class="condition__select-item" type="radio" id="condition2" name="condition" value="2" {{ old('condition') == '2' ? 'checked' : '' }}>
+                        <label class="condition__select-label" for="condition2">目立った傷や汚れなし</label>
+                        <input class="condition__select-item" type="radio" id="condition3" name="condition" value="3" {{ old('condition') == '3' ? 'checked' : '' }}>
+                        <label class="condition__select-label" for="condition3">やや傷や汚れあり</label>
+                        <input class="condition__select-item" type="radio" id="condition4" name="condition" value="4" {{ old('condition') == '4' ? 'checked' : '' }}>
                         <label class="condition__select-label" for="cond4">状態が悪い</label>
                     </div>
                 </div>

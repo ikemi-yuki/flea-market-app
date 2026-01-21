@@ -14,7 +14,7 @@
     margin-bottom: 52px;
 }
 
-.purchase-item__image-wrapper {
+.purchase-item__image-container {
     width: 177.53px;
     height: 177.53px;
 }
@@ -52,19 +52,12 @@
     text-align: left;
 }
 
-.payment-form {
-    margin-left: 96px;
-    margin-bottom: 63px;
-}
-
 .payment {
     width: 265px;
     text-align: left;
     position: relative;
-}
-
-.payment__toggle {
-    display: none;
+    margin-left: 96px;
+    margin-bottom: 63px;
 }
 
 .payment__select {
@@ -93,7 +86,7 @@
     display: none;
     position: absolute;
     width: 100%;
-    z-index: 10;
+    margin-top: -31px;
     padding: 4px;
     border: 1.5px solid #b1b1b1;
     border-top: none;
@@ -101,30 +94,28 @@
     background: #636769;
 }
 
-.payment__toggle:checked ~ .payment__select-list {
+.payment-toggle:checked ~ .payment__select-list {
     display: block;
-    margin-top: -31px;
 }
 
-.payment__select-item {
-    display: none;
-}
-
-.payment__select-label {
-    display: block;
+.payment-form__button-submit {
+    width: 100%;
+    text-align: left;
     padding: 4px 16px;
     font-size: 12px;
     cursor: pointer;
+    border: none;
+    background: #636769;
     color: #eaeaea;
-}
-
-.payment__select-item:checked + .payment__select-label {
-    background: #5599eb;
-    border-radius: 5px;
     position: relative;
 }
 
-.payment__select-item:checked + .payment__select-label::before {
+.payment-form__button-submit.is-active {
+    background: #5599eb;
+    border-radius: 5px;
+}
+
+.payment-form__button-submit.is-active::before {
     content: "✔";
     position: absolute;
     font-size: 12px;
@@ -140,7 +131,6 @@
 .purchase-address__wrapper {
     display: flex;
     justify-content: space-between;
-    
 }
 
 .purchase-address__title {

@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\PurchaseAddressController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +32,13 @@ Route::middleware('auth')->group(function (){
 
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])->name('purchase.show');
 
-    Route::post('/purchase/{item_id}', [PurchaseController::class, 'updatePayment'])->name('purchase.updatePayment');
+    Route::post('/purchase/{item_id}', [PurchaseController::class, 'store'])->name('purchase.store');
 
-    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'edit'])->name('purchase.address.edit');
+    Route::post('/purchase/payment/{item_id}', [PurchaseController::class, 'updatePayment'])->name('purchase.updatePayment');
 
-    Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
+    Route::get('/purchase/address/{item_id}', [PurchaseAddressController::class, 'edit'])->name('purchase.address.edit');
+
+    Route::post('/purchase/address/{item_id}', [PurchaseAddressController::class, 'update'])->name('purchase.address.update');
 
     Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage.index');
 

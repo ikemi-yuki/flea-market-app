@@ -9,7 +9,7 @@
         <div class="address-change__header">
             <h2 class="address-change__header-title">住所の変更</h2>
         </div>
-        <form class="address-change__form" action="{{ route('purchase.address.update') }}" method="post">
+        <form class="address-change__form" action="{{ route('purchase.address.update', ['item_id' => $item->id]) }}" method="post">
             @csrf
             <div class="form__group">
                 <div class="form__group-title">
