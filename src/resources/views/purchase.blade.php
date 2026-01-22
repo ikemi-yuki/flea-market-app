@@ -18,12 +18,11 @@
             </div>
             <div class="purchase-payment">
                 <h3 class="purchase-payment__title">支払方法</h3>
-                <div class="payment">
-                    <input class="payment-toggle" type="checkbox" id="payment-open" hidden>
-                    <label class="payment__select" for="payment-open">
+                <details class="payment">
+                    <summary class="payment__select" for="payment-open">
                         {{ session('payment_method') == 1 ? 'コンビニ払い' : '' }}
                         {{ session('payment_method') == 2 ? 'カード支払い' : '' }}
-                        {{ !session('payment_method') ? '選択してください' : '' }}</label>
+                        {{ !session('payment_method') ? '選択してください' : '' }}</summary>
                     <div class="payment__select-list">
                         <form class="payment-form" action="{{ route('purchase.updatePayment', ['item_id' => $item->id]) }}" method="post">
                             @csrf
@@ -40,7 +39,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </details>
             </div>
             <div class="purchase-address">
                 <div class="purchase-address__wrapper">

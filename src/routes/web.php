@@ -27,7 +27,7 @@ Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('items.de
 
 Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('items.like');
 
-Route::middleware('auth')->group(function (){
+Route::middleware('auth', 'profile.completed')->group(function (){
     Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])->name('items.comment');
 
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])->name('purchase.show');

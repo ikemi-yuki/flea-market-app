@@ -101,10 +101,6 @@
     position: relative;
 }
 
-.condition__toggle {
-    display: none;
-}
-
 .condition__select {
     display: block;
     width: 100%;
@@ -129,20 +125,15 @@
 }
 
 .condition__select-list {
-    display: none;
     position: absolute;
     width: 100%;
     z-index: 10;
     padding: 6px;
+    margin-top: -45px;
     border: 1px solid #5f5f5f;
     border-top: none;
     border-radius: 5px;
     background: #636769;
-}
-
-.condition__toggle:checked ~ .condition__select-list {
-    display: block;
-    margin-top: -45px;
 }
 
 .condition__select-item {
@@ -170,6 +161,30 @@
     font-size: 15px;
     font-weight: bold;
     left: 10px;
+}
+
+.condition__text {
+    display: none;
+}
+
+.condition:not(:has(.condition__select-item:checked)) .default {
+    display: inline;
+}
+
+.condition:has(#condition1:checked) .is-1,
+.condition:has(#condition2:checked) .is-2,
+.condition:has(#condition3:checked) .is-3,
+.condition:has(#condition4:checked) .is-4 {
+    display: inline;
+}
+
+.condition:has(.condition__select-item:checked) .condition__select-list {
+    display: none;
+}
+
+.condition[open] .condition__select:active + .condition__select-list,
+.condition[open] .condition__select-list:hover {
+    display: block;
 }
 
 .form-input {
