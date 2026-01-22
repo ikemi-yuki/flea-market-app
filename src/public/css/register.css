@@ -74,3 +74,55 @@
     color: #0073cc;
     text-decoration: none;
 }
+
+@media screen and (max-width: 850px) and (min-width: 768px) {
+    .register-form__content {
+        margin-top: 59px;
+    }
+
+    .register-form__header {
+        margin-bottom: 28px;
+    }
+
+    .register-form__header-title {
+        font-size: 24px;
+    }
+
+    .form {
+        width: 340px;
+    }
+
+    .form__group-title {
+        font-size: 14px;
+    }
+
+    .form__error {
+        font-size: 12px;
+        height: 14px;
+    }
+
+    .form__input {
+        padding: 5px;
+        height: 29px;
+    }
+
+    .form__button {
+        margin-top: 45px;
+    }
+
+    .form__button-submit {
+        padding: 4px;
+        height: 32px;
+        font-size: 16px;
+    }
+
+    .login__link {
+        margin-top: 13px;
+        margin-bottom: 20px;
+    }
+
+    .login__button-submit {
+        font-size: 12px;
+    }
+
+}

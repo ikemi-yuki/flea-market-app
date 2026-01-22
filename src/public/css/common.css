@@ -71,3 +71,48 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 850px) and (min-width: 768px) {
+    .header {
+        height: 49px;
+    }
+
+    .header__logo {
+        padding-left: 13px;
+    }
+
+    .header__logo-img {
+        width: 205px;
+        height: 20px;
+    }
+
+    .search-form__item {
+        width: 270px;
+        height: 28px;
+        padding-left: 10px;
+        font-size: 13px;
+    }
+
+    .header__link {
+        width: 70px;
+        height: 25px;
+        padding: 2.5px 0;
+        font-size: 13px;
+    }
+
+    .header__link--logout {
+        width: 68px;
+        height: 24px;
+        margin-right: 10px;
+        font-size: 13px;
+    }
+
+    .header__link--sell {
+        width: 50px;
+        height: 25px;
+        margin: 0 13px;
+        padding: 2.5px 0;
+        font-size: 13px;
+        border-radius: 4px;
+    }
+}
