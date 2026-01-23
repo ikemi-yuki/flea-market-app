@@ -59,8 +59,9 @@
                 <div class="comment-user">
                     @if ($comment->user->profile->icon_path)
                         <img class="comment-user__img" src="{{ asset('storage/' . ($comment->user->profile->icon_path)) }}" alt="プロフィール画像">
+                    @else
+                        <div class="profile__image-default"></div>
                     @endif
-                    <div class="profile__image-default"></div>
                     <p class="comment-user__name">{{ $comment->user->profile->name }}</p>
                 </div>
                 <div class="comment-content">

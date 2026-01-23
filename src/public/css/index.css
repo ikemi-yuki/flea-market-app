@@ -62,3 +62,39 @@
     color: #ff0000;
     margin-top: 5px;
 }
+
+@media screen and (max-width: 850px) and (min-width: 768px) {
+    .tabs {
+        height: 35px;
+        gap: 35px;
+        margin-top: 30px;
+        padding-left: 65px;
+    }
+
+    .item__tab, .item__tab--active {
+        width: 90px;
+        height: 30px;
+        font-size: 18px;
+    }
+
+    .items {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin: 45px auto;
+    }
+
+    .item-card {
+        width: 200px;
+    }
+
+    .item-card__name {
+        font-size: 20px;
+        margin-top: 3px;
+    }
+
+    .item-card__status {
+        font-size: 16px;
+        margin-top: 3px;
+    }
+
+}

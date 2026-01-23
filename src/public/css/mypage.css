@@ -110,3 +110,63 @@
     color: #ff0000;
     margin-top: 5px;
 }
+
+@media screen and (max-width: 850px) and (min-width: 768px) {
+    .mypage {
+        margin: 60px auto;
+    }
+
+    .mypage-user {
+        margin-left: 70px;
+    }
+
+    .mypage-user__img, .profile__image-default {
+        width: 100px;
+        height: 100px;
+    }
+
+    .mypage-user__name {
+        margin-left: 30px;
+        font-size: 30px;
+    }
+
+    .profile-edit__button {
+        width: 280px;
+        font-size: 23px;
+        padding: 10px;
+    }
+
+    .tabs {
+        height: 35px;
+        gap: 35px;
+        margin-top: 30px;
+        padding-left: 65px;
+    }
+
+    .mypage__tab, .mypage__tab--active {
+        width: 110px;
+        height: 30px;
+        font-size: 18px;
+    }
+
+    .items {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin: 45px auto;
+    }
+
+    .item-card {
+        width: 200px;
+    }
+
+    .item-card__name {
+        font-size: 20px;
+        margin-top: 3px;
+    }
+
+    .item-card__status {
+        font-size: 16px;
+        margin-top: 3px;
+    }
+
+}

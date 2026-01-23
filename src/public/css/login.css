@@ -1,3 +1,20 @@
+.header {
+    background: #000;
+    height: 82px;
+    padding: 25px 0;
+}
+
+.header__logo {
+    margin: 0;
+    margin-left: 40px;
+}
+
+.header__logo-img {
+    width: 370px;
+    height: 36px;
+    display: block;
+}
+
 .login-form__content {
     margin: 0 auto;
     max-width: 1540px;
@@ -76,34 +93,48 @@
 }
 
 @media screen and (max-width: 850px) and (min-width: 768px) {
+    .header {
+        height: 60px;
+        padding: 18px 0;
+    }
+
+    .header__logo {
+        margin-left: 20px;
+    }
+
+    .header__logo-img {
+        width: 259px;
+        height: 25px;
+    }
+
     .login-form__content {
         margin-top: 59px;
     }
 
     .login-form__header {
-        margin-bottom: 28px;
+        margin-bottom: 35px;
     }
 
     .login-form__header-title {
-        font-size: 24px;
+        font-size: 30px;
     }
 
     .form {
-        width: 340px;
+        width: 380px;
     }
 
     .form__group-title {
-        font-size: 14px;
+        font-size: 22px;
     }
 
     .form__error {
-        font-size: 12px;
-        height: 14px;
+        font-size: 16px;
+        height: 18px;
     }
 
     .form__input {
         padding: 5px;
-        height: 29px;
+        height: 32px;
     }
 
     .form__button {
@@ -111,18 +142,18 @@
     }
 
     .form__button-submit {
-        padding: 4px;
-        height: 32px;
-        font-size: 16px;
+        padding: 3px;
+        height: 45px;
+        font-size: 23px;
     }
 
     .register__link {
-        margin-top: 13px;
+        margin-top: 18px;
         margin-bottom: 20px;
     }
 
     .register__button-submit {
-        font-size: 12px;
+        font-size: 18px;
     }
 
 }

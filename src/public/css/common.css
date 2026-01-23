@@ -3,8 +3,8 @@
     height: 82px;
 }
 
-.header__content {
-    max-width: 1540px;
+.header__container {
+    max-width: 1512px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -12,9 +12,14 @@
     height: 100%;
 }
 
+.header__main {
+    display: flex;
+    align-items: center;
+}
+
 .header__logo {
     margin: 0;
-    padding-left: 25px;
+    margin-left: 40px;
 }
 
 .header__logo-img {
@@ -27,15 +32,24 @@
     width: 500px;
     height: 50px;
     padding-left: 20px;
+    margin-left: 95px;
     font-size: 24px;
 }
 
 .header-nav {
-    display: flex;
-    justify-content: space-between;
+    width: 28%;
+    margin-right: 40px;
 }
 
-.header__link {
+.nav__list {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav__link {
     width: 135px;
     height: 47px;
     padding: 5px 0;
@@ -46,10 +60,9 @@
     cursor: pointer;
 }
 
-.header__link--logout {
+.nav__link--logout {
     width: 135px;
     height: 47px;
-    margin-right: 20px;
     color: #fff;
     border: none;
     background: transparent;
@@ -57,10 +70,10 @@
     cursor: pointer;
 }
 
-.header__link--sell {
+.nav__link--sell {
+    display: block;
     width: 100px;
     height: 50px;
-    margin: 0 25px;
     padding: 5px 0;
     color: #000;
     text-decoration: none;
@@ -74,45 +87,65 @@
 
 @media screen and (max-width: 850px) and (min-width: 768px) {
     .header {
-        height: 49px;
+        height: 120px;
+        padding: 0 20px;
+    }
+
+    .header__container {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header__main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 50%;
+        width: 100%;
     }
 
     .header__logo {
-        padding-left: 13px;
+        margin-left: 0;
     }
 
     .header__logo-img {
-        width: 205px;
-        height: 20px;
+        width: 259px;
+        height: 25px;
     }
 
     .search-form__item {
-        width: 270px;
-        height: 28px;
+        width: 380px;
+        height: 35px;
         padding-left: 10px;
-        font-size: 13px;
+        margin-left: 0;
+        font-size: 18px;
     }
 
-    .header__link {
-        width: 70px;
-        height: 25px;
-        padding: 2.5px 0;
-        font-size: 13px;
+    .header-nav {
+        width: 100%;
+        margin-right: 0;
     }
 
-    .header__link--logout {
-        width: 68px;
+    .nav__link {
+        width: 95px;
         height: 24px;
-        margin-right: 10px;
-        font-size: 13px;
+        padding: 2.5px 0;
+        font-size: 18px;
     }
 
-    .header__link--sell {
-        width: 50px;
-        height: 25px;
-        margin: 0 13px;
-        padding: 2.5px 0;
-        font-size: 13px;
+    .nav__link--logout {
+        width: 95px;
+        height: 24px;
+        font-size: 18px;
+    }
+
+    .nav__link--sell {
+        width: 80px;
+        height: 40px;
+        padding: 5px 0;
+        font-size: 18px;
         border-radius: 4px;
     }
 }

@@ -10,28 +10,34 @@
 </head>
 <body>
     <header class="header">
-        <div class="header__content">
-            <h1 class=header__logo>
-                <a href="{{ route('items.index') }}">
-                    <img class="header__logo-img" src="{{ asset('images/COACHTECH-header-logo.png') }}" alt="COACHTECH">
-                </a>
-            </h1>
-            <form class="search-form" action="{{ route('items.index') }}" method="get">
-                @csrf
-                <input class="search-form__item" type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ $keyword }}">
-            </form>
+        <div class="header__container">
+            <div class="header__main">
+                <h1 class=header__logo>
+                    <a href="{{ route('items.index') }}">
+                        <img class="header__logo-img" src="{{ asset('images/COACHTECH-header-logo.png') }}" alt="COACHTECH">
+                    </a>
+                </h1>
+                <form class="search-form" action="{{ route('items.index') }}" method="get">
+                    @csrf
+                    <input class="search-form__item" type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ $keyword }}">
+                </form>
+            </div>
             <div class="header-nav">
-                @auth
-                    <form class="header-nav__form" action="{{ route('logout') }}" method="post">
-                        @csrf
-                        <input class="header__link--logout" type="submit" value="ログアウト">
-                    </form>
-                @endauth
-                @guest
-                    <a class="header__link" href="{{ route('login') }}">ログイン</a>
-                @endguest
-                <a class="header__link" href="{{ route('mypage.index') }}">マイページ</a>
-                <a class="header__link--sell" href="{{ route('sell.index') }}">出品</a>
+                <nav class="nav">
+                    <ul class="nav__list">
+                        @auth
+                            <li class="nav__item"><form class="nav__item-form" action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <input class="nav__link--logout" type="submit" value="ログアウト">
+                            </form></li>
+                        @endauth
+                        @guest
+                            <li class="nav__item"><a class="nav__link" href="{{ route('login') }}">ログイン</a></li>
+                        @endguest
+                        <li class="nav__item"><a class="nav__link" href="{{ route('mypage.index') }}">マイページ</a></li>
+                        <li class="nav__item"><a class="nav__link--sell" href="{{ route('sell.index') }}">出品</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>
