@@ -92,7 +92,7 @@
     text-decoration: none;
 }
 
-@media screen and (max-width: 850px) and (min-width: 768px) {
+@media screen and (max-width: 850px) {
     .header {
         height: 60px;
         padding: 18px 0;
@@ -108,11 +108,11 @@
     }
 
     .register-form__content {
-        margin-top: 59px;
+        margin-top: 35px;
     }
 
     .register-form__header {
-        margin-bottom: 35px;
+        margin-bottom: 40px;
     }
 
     .register-form__header-title {
@@ -120,7 +120,7 @@
     }
 
     .form {
-        width: 380px;
+        width: 60%;
     }
 
     .form__group-title {
@@ -129,12 +129,11 @@
 
     .form__error {
         font-size: 16px;
-        height: 18px;
+        height: 20px;
     }
 
     .form__input {
-        padding: 5px;
-        height: 32px;
+        height: 40px;
     }
 
     .form__button {
@@ -145,11 +144,6 @@
         padding: 3px;
         height: 45px;
         font-size: 23px;
-    }
-
-    .login__link {
-        margin-top: 18px;
-        margin-bottom: 20px;
     }
 
     .login__button-submit {

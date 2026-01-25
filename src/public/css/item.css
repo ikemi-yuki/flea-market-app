@@ -131,14 +131,17 @@
 }
 
 .info-table__header {
+    width: 28%;
     font-size: 24px;
     font-weight: bold;
+    text-align: left;
 }
 
 .info-table__item {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    column-gap: 20px;
+    row-gap: 36px;
     font-size: 20px;
     margin-left: 60px;
 }
@@ -147,6 +150,7 @@
     background: #d9d9d9;
     border-radius: 15px;
     padding: 0 15px;
+    margin: 0;
 }
 
 .info-table__item-condition {
@@ -234,7 +238,7 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 850px) and (min-width: 768px) {
+@media screen and (max-width: 850px) {
     .item-detail {
         flex-direction: column;
         gap: 30px;
@@ -292,8 +296,8 @@
     }
 
     .item-purchase__button {
-        padding: 5px;
-        height: 50px;
+        padding: 7px;
+        height: 55px;
         font-size: 26px;
     }
 
@@ -359,7 +363,7 @@
     }
 
     .comment-form__button-submit {
-        height: 50px;
+        height: 55px;
         font-size: 22px;
     }
 }

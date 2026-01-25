@@ -255,3 +255,56 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+@media screen and (max-width: 850px) {
+    .sell {
+        margin-top: 35px;
+    }
+
+    .sell__header {
+        margin-bottom: 40px;
+    }
+
+    .sell__header-title {
+        font-size: 30px;
+    }
+
+    .sell__form {
+        width: 80%;
+    }
+
+    .form-group {
+        width: 100%;
+        margin-top: 35px;
+    }
+
+    .form-label {
+        font-size: 22px;
+    }
+
+    .form-group__title {
+        margin-top: 50px;
+        font-size: 26px;
+    }
+
+    .category-group {
+        margin-top: 25px;
+        column-gap: 15px;
+        row-gap: 28px;
+    }
+
+    .price-input__yen {
+        font-size: 22px;
+    }
+
+    .form__button {
+        margin-top: 70px;
+        margin-bottom: 80px;
+    }
+
+    .form__button-submit {
+        padding: 5px;
+        height: 55px;
+        font-size: 23px;
+    }
+}

@@ -111,7 +111,7 @@
     margin-top: 5px;
 }
 
-@media screen and (max-width: 850px) and (min-width: 768px) {
+@media screen and (max-width: 850px) {
     .mypage {
         margin: 60px auto;
     }
@@ -137,16 +137,15 @@
     }
 
     .tabs {
-        height: 35px;
+        height: 40px;
         gap: 35px;
         margin-top: 30px;
         padding-left: 65px;
     }
 
     .mypage__tab, .mypage__tab--active {
-        width: 110px;
-        height: 30px;
-        font-size: 18px;
+        width: 120px;
+        font-size: 20px;
     }
 
     .items {

@@ -63,18 +63,17 @@
     margin-top: 5px;
 }
 
-@media screen and (max-width: 850px) and (min-width: 768px) {
+@media screen and (max-width: 850px) {
     .tabs {
-        height: 35px;
+        height: 40px;
         gap: 35px;
         margin-top: 30px;
         padding-left: 65px;
     }
 
     .item__tab, .item__tab--active {
-        width: 90px;
-        height: 30px;
-        font-size: 18px;
+        width: 100px;
+        font-size: 20px;
     }
 
     .items {

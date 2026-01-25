@@ -92,3 +92,61 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+@media screen and (max-width: 850px) {
+    .profile {
+        margin-top: 35px;
+    }
+
+    .profile__header {
+        margin-bottom: 40px;
+    }
+
+    .profile__header-title {
+        font-size: 30px;
+    }
+
+    .profile__form {
+        width: 60%;
+    }
+
+    .form__group {
+        margin-top: 30px;
+    }
+
+    .profile__image {
+        justify-content: center;
+    }
+
+    .profile__image-preview, .profile__image-default {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile__image-select {
+        margin-left: 60px;
+        padding: 10px;
+    }
+
+    .image__select-item {
+        font-size: 18px;
+    }
+
+    .form__group-title {
+        font-size: 22px;
+    }
+
+    .form__input {
+        height: 40px;
+    }
+
+    .form__button {
+        margin: 55px 0;
+    }
+
+    .form__button-submit {
+        padding: 5px;
+        height: 55px;
+        font-size: 23px;
+    }
+}

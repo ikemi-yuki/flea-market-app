@@ -32,10 +32,10 @@
                             </form></li>
                         @endauth
                         @guest
-                            <li class="nav__item"><a class="nav__link" href="{{ route('login') }}">ログイン</a></li>
+                            <li class="nav__item"><a class="nav__link--login" href="{{ route('login') }}">ログイン</a></li>
                         @endguest
                         <li class="nav__item"><a class="nav__link" href="{{ route('mypage.index') }}">マイページ</a></li>
-                        <li class="nav__item"><a class="nav__link--sell" href="{{ route('sell.index') }}">出品</a></li>
+                        <li class="nav__item--button"><a class="nav__link--sell" href="{{ route('sell.index') }}">出品</a></li>
                     </ul>
                 </nav>
             </div>

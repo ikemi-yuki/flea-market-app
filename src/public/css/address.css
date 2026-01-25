@@ -7,7 +7,6 @@
 
 .address-change__header {
     margin-bottom: 103px;
-    
 }
 
 .address-change__header-title {
@@ -17,7 +16,6 @@
 .address-change__form {
     margin: 0 auto;
     width: 680px;
-    
 }
 
 .form__group {
@@ -57,4 +55,45 @@
     font-size: 26px;
     font-weight: bold;
     cursor: pointer;
+}
+
+@media screen and (max-width: 850px) {
+    .address-change {
+        margin-top: 35px;
+        text-align: center;
+    }
+
+    .address-change__header {
+        margin-bottom: 40px;
+    }
+
+    .address-change__header-title {
+        font-size: 30px;
+    }
+
+    .address-change__form {
+        width: 60%;
+    }
+
+    .form__group {
+        margin-top: 30px;
+    }
+
+    .form__group-title {
+        font-size: 22px;
+    }
+
+    .form__input {
+        height: 40px;
+    }
+
+    .form__button {
+        margin: 55px 0;
+    }
+
+    .form__button-submit {
+        padding: 5px;
+        height: 55px;
+        font-size: 23px;
+    }
 }

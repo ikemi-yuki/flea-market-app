@@ -5,8 +5,7 @@
 }
 
 .purchase-info {
-    width: 805px;
-
+    width: 55%;
 }
 
 .purchase-item {
@@ -162,8 +161,8 @@
 }
 
 .purchase-subtotal {
-    width: 440px;
-    margin: 0 auto;
+    width: 35%;
+    margin: 0 0 0 auto;
 }
 
 .subtotal-table {
@@ -221,4 +220,98 @@
     font-size: 26px;
     font-weight: bold;
     cursor: pointer;
+}
+
+@media screen and (max-width: 850px) {
+    .purchase {
+        margin: 80px auto;
+        flex-direction: column;
+    }
+
+    .purchase-info {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .purchase-item {
+        margin-bottom: 45px;
+    }
+
+    .purchase-item__image-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .purchase-item__name {
+        font-size: 26px;
+    }
+
+    .purchase-item__price {
+        font-size: 28px;
+        margin-top: 10px;
+    }
+
+    .purchase-item__price--yen {
+        font-size: 23px;
+    }
+
+    .purchase-payment__title {
+        padding: 15px 0;
+        font-size: 18px;
+    }
+
+    .payment {
+        margin-bottom: 45px;
+    }
+
+    .purchase-address__title {
+        padding: 15px 0;
+        font-size: 18px;
+    }
+
+    .purchase-address__change-link {
+        font-size: 18px;
+    }
+
+    .purchase-address__item {
+        margin-bottom: 45px;
+        font-size: 18px;
+    }
+
+    .purchase-subtotal {
+        width: 80%;
+        margin: 70px auto;
+    }
+
+    .subtotal-table {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .subtotal-table__row {
+        height: 100px;
+    }
+
+    .subtotal-table__header, .subtotal-table__price--yen {
+        font-size: 18px;
+    }
+
+    .subtotal-table__price {
+        font-size: 24px;
+    }
+
+    .subtotal-table__payment {
+        font-size: 22px;
+    }
+
+    .form__button {
+        width: 80%;
+        margin: 60px auto;
+    }
+
+    .form__button-submit {
+        padding: 3px;
+        height: 45px;
+        font-size: 23px;
+    }
 }
