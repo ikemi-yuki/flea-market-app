@@ -11,6 +11,7 @@
         </div>
         <form class="address-change__form" action="{{ route('purchase.address.update', ['item_id' => $item->id]) }}" method="post">
             @csrf
+            <input type="hidden" name="payment_method" value="{{ session('payment_method') }}">
             <div class="form__group">
                 <div class="form__group-title">
                     <label class="form__label-item">郵便番号</label>

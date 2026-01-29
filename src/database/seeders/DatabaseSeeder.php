@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory()
-            ->has(Profile::factory())
             ->count(5)
+            ->withProfile()
             ->create();
 
         $this->call(CategoriesTableSeeder::class);

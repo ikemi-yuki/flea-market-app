@@ -34,7 +34,7 @@ class SellController extends Controller
                 'brand' => $request->brand,
                 'description' => $request->description,
                 'price' => $request->price,
-                'status' => 1,
+                'status' => Item::STATUS_ON_SALE,
             ]);
 
             $item->categories()->sync(

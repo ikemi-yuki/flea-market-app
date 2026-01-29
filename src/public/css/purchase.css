@@ -59,7 +59,7 @@
     margin-bottom: 63px;
 }
 
-.payment__select {
+.payment__select-label {
     display: block;
     width: 100%;
     height: 31px;
@@ -73,7 +73,7 @@
     position: relative;
 }
 
-.payment__select::after {
+.payment__select-label::after {
     content: "▼";
     position: absolute;
     right: 6px;
@@ -82,6 +82,7 @@
 }
 
 .payment__select-list {
+    display: none;
     position: absolute;
     width: 100%;
     margin-top: -31px;
@@ -90,26 +91,28 @@
     border-top: none;
     border-radius: 5px;
     background: #636769;
+    list-style: none;
 }
 
-.payment-form__button-submit {
-    width: 100%;
-    text-align: left;
-    padding: 4px 16px;
-    font-size: 12px;
+.payment__select-item {
+    padding: 6px 40px;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    border: none;
-    background: #636769;
     color: #eaeaea;
     position: relative;
 }
 
-.payment-form__button-submit.is-active {
+.payment__select:checked ~ .payment__select-list {
+    display: block;
+}
+
+.payment__select-item.is-selected {
     background: #5599eb;
     border-radius: 5px;
 }
 
-.payment-form__button-submit.is-active::before {
+.payment__select-item.is-selected::before {
     content: "✔";
     position: absolute;
     font-size: 12px;
@@ -134,13 +137,15 @@
     text-align: left;
 }
 
+.purchase-address__form {
+    margin: 35px 0;
+}
+
 .purchase-address__change-link {
-    width: 115px;
-    height: 85px;
-    padding: 35px 0;
     font-size: 20px;
-    text-align: left;
-    text-decoration: none;
+    border: none;
+    background: transparent;
+    color: #0073cc;
     cursor: pointer;
 }
 

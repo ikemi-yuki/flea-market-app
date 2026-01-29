@@ -1,7 +1,6 @@
 <?php
 
 namespace Database\Factories;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProfileFactory extends Factory

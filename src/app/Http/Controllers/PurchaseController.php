@@ -7,18 +7,30 @@ use App\Models\Address;
 use Illuminate\Http\Request;
 use App\Http\Requests\PurchaseRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Stripe\Stripe;
 use Stripe\Checkout\Session as CheckoutSession;
 
 class PurchaseController extends Controller
 {
-    public function show($item_id)
+    public function show(Request $request, $item_id)
     {
         $item = Item::findOrFail($item_id);
+
+        if (!session()->has('current_item_id') || session('current_item_id') != $item_id) {
+            session()->forget('payment_method');
+            session(['current_item_id' => $item_id]);
+        }
 
         $user = Auth::user();
 
         $profile = $user->profile;
+
+        if ($request->has('payment_method')) {
+            session(['payment_method' => $request->payment_method]);
+        }
+
+        $paymentMethod = session('payment_method');
 
         $address = session('purchase_address');
 
@@ -30,16 +42,7 @@ class PurchaseController extends Controller
             ];
         }
 
-        $paymentMethod = session('payment_method', 1);
-
         return view('purchase', compact('item', 'address', 'paymentMethod'));
-    }
-
-    public function updatePayment(Request $request, $item_id)
-    {
-        session(['payment_method' => $request->payment_method]);
-
-        return redirect()->route('purchase.show', $item_id);
     }
 
     public function store(PurchaseRequest $request, $item_id)
@@ -47,7 +50,7 @@ class PurchaseController extends Controller
         $user = Auth::user();
         $item = Item::findOrFail($item_id);
 
-        if ($item->status === 2) {
+        if ($item->status === Item::STATUS_SOLD) {
             abort(403, 'この商品は購入済みです');
         }
 
@@ -58,25 +61,30 @@ class PurchaseController extends Controller
                 'building' => $user->profile->building,
             ];
 
-        $address = Address::create([
-            'user_id' => $user->id,
-            'shipping_post_code' => $addressData['post_code'],
-            'shipping_address' => $addressData['address'],
-            'shipping_building' => $addressData['building'],
-        ]);
+        DB::transaction(function () use ($user, $item, $addressData, $request) {
+            $address = Address::create([
+                'user_id' => $user->id,
+                'shipping_post_code' => $addressData['post_code'],
+                'shipping_address' => $addressData['address'],
+                'shipping_building' => $addressData['building'],
+            ]);
 
-        Purchase::create([
-            'user_id' => $user->id,
-            'item_id' => $item->id,
-            'address_id' => $address->id,
-            'payment_method' => $request->payment_method,
-        ]);
+            Purchase::create([
+                'user_id' => $user->id,
+                'item_id' => $item->id,
+                'address_id' => $address->id,
+                'payment_method' => $request->payment_method,
+            ]);
 
-        $item->update([
-            'status' => 2,
-        ]);
+            $item->update([
+                'status' => Item::STATUS_SOLD,
+            ]);
+        });
 
-        session()->forget(['purchase_address', 'payment_method']);
+        session()->forget([
+            'purchase_address',
+            'payment_method',
+        ]);
 
         return redirect()->route('items.index');
     }

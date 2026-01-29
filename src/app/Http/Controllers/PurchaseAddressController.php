@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class PurchaseAddressController extends Controller
 {
-    public function edit($item_id)
+    public function edit(Request $request, $item_id)
     {
+        session(['payment_method' => $request->payment_method]);
+
         $item = Item::findOrFail($item_id);
 
         return view('address', compact('item'));
@@ -24,6 +26,10 @@ class PurchaseAddressController extends Controller
                 'building' => $request->shipping_building,
             ]
         ]);
+
+        if ($request->filled('payment_method')) {
+            session(['payment_method' => $request->payment_method]);
+        }
 
         return redirect()->route('purchase.show', $item_id);
     }

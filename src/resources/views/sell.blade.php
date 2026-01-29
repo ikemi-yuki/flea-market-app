@@ -14,8 +14,8 @@
             <div class="form-group">
                 <label class="form-label">商品画像</label>
                 <div class="form-image">
-                    <label class="image-label" for="item_image">画像を選択する</label>
-                    <input type="file" name="image_path" id="item_image" hidden>
+                    <label class="image-label" for="item-image">画像を選択する</label>
+                    <input type="file" name="image_path" id="item-image" hidden>
                 </div>
             </div>
             <h3 class="form-group__title">商品の詳細</h3>
@@ -32,25 +32,19 @@
             </div>
             <div class="form-group">
                 <label class="form-label">商品の状態</label>
-                <details class="condition">
-                    <summary class="condition__select" for="condition-open">
-                        <span class="condition__text default">選択してください</span>
-                        <span class="condition__text is-1">良好</span>
-                        <span class="condition__text is-2">目立った傷や汚れなし</span>
-                        <span class="condition__text is-3">やや傷や汚れあり</span>
-                        <span class="condition__text is-4">状態が悪い</span>
-                        </summary>
-                    <div class="condition__select-list">
-                        <input class="condition__select-item" type="radio" id="condition1" name="condition" value="1" {{ old('condition') == '1' ? 'checked' : '' }}>
-                        <label class="condition__select-label" for="condition1">良好</label>
-                        <input class="condition__select-item" type="radio" id="condition2" name="condition" value="2" {{ old('condition') == '2' ? 'checked' : '' }}>
-                        <label class="condition__select-label" for="condition2">目立った傷や汚れなし</label>
-                        <input class="condition__select-item" type="radio" id="condition3" name="condition" value="3" {{ old('condition') == '3' ? 'checked' : '' }}>
-                        <label class="condition__select-label" for="condition3">やや傷や汚れあり</label>
-                        <input class="condition__select-item" type="radio" id="condition4" name="condition" value="4" {{ old('condition') == '4' ? 'checked' : '' }}>
-                        <label class="condition__select-label" for="condition4">状態が悪い</label>
-                    </div>
-                </details>
+                <div class="condition">
+                    <input class="condition__select" type="checkbox" id="condition-toggle" hidden>
+                    <label class="condition__select-label" for="condition-toggle">
+                        <span class="condition__select-text" id="select-text">選択してください</span>
+                    </label>
+                    <ul class="condition__select-list">
+                        <li class="condition__select-item" data-value="1" data-selected="{{ old('condition') == 1 ? 'true' : 'false' }}">良好</li>
+                        <li class="condition__select-item" data-value="2" data-selected="{{ old('condition') == 2 ? 'true' : 'false' }}">目立った傷や汚れなし</li>
+                        <li class="condition__select-item" data-value="3" data-selected="{{ old('condition') == 3 ? 'true' : 'false' }}">やや傷や汚れあり</li>
+                        <li class="condition__select-item" data-value="4" data-selected="{{ old('condition') == 4 ? 'true' : 'false' }}">状態が悪い</li>
+                    </ul>
+                    <input type="hidden" name="condition" id="condition-input" value="{{ old('condition') }}">
+                </div>
             </div>
             <h3 class="form-group__title">商品名と説明</h3>
             <div class="form-group">
@@ -78,3 +72,32 @@
         </form>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectedValue = document.getElementById('condition-input').value;
+
+            if (!selectedValue) return;
+
+            document.querySelectorAll('.condition__select-item').forEach(item => {
+                if (item.dataset.value === selectedValue) {
+                    item.classList.add('is-selected');
+                    document.getElementById('select-text').textContent = item.textContent;
+                }
+            });
+        });
+
+        document.querySelectorAll('.condition__select-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('select-text').textContent = item.textContent;
+                document.getElementById('condition-input').value = item.dataset.value;
+                document.querySelectorAll('.condition__select-item').forEach(i => {
+                    i.classList.remove('is-selected');
+                });
+                item.classList.add('is-selected');
+                document.getElementById('condition-toggle').checked = false;
+            });
+        });
+    </script>
+@endpush

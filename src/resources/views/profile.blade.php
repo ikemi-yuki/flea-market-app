@@ -19,8 +19,8 @@
                         <div class="profile__image-default"></div>
                     @endif
                     <div class="profile__image-select">
-                        <label class="image__select-item" for="profile_image">画像を選択する</label>
-                        <input type="file" name="icon_path" id="profile_image" hidden>
+                        <label class="image__select-item" for="profile-image">画像を選択する</label>
+                        <input type="file" name="icon_path" id="profile-image" hidden>
                     </div>
                 </div>
             </div>

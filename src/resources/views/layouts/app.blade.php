@@ -43,6 +43,8 @@
     </header>
     <main>
         @yield('content')
+
+        @stack('scripts')
     </main>
 </body>
 </html>

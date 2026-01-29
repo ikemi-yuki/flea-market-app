@@ -9,6 +9,9 @@ class Item extends Model
 {
     use HasFactory;
 
+    public const STATUS_ON_SALE = 1;
+    public const STATUS_SOLD = 2;
+
     protected $fillable = [
         'user_id',
         'name',

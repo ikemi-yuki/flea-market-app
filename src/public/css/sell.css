@@ -101,7 +101,7 @@
     position: relative;
 }
 
-.condition__select {
+.condition__select-label {
     display: block;
     width: 100%;
     height: 45px;
@@ -115,7 +115,7 @@
     position: relative;
 }
 
-.condition__select::after {
+.condition__select-label::after {
     content: "▼";
     position: absolute;
     right: 15px;
@@ -125,6 +125,7 @@
 }
 
 .condition__select-list {
+    display: none;
     position: absolute;
     width: 100%;
     z-index: 10;
@@ -134,57 +135,33 @@
     border-top: none;
     border-radius: 5px;
     background: #636769;
+    list-style: none;
 }
 
 .condition__select-item {
-    display: none;
-}
-
-.condition__select-label {
-    display: block;
     padding: 6px 40px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     color: #eaeaea;
-}
-
-.condition__select-item:checked + .condition__select-label {
-    background: #5599eb;
-    border-radius: 5px;
     position: relative;
 }
 
-.condition__select-item:checked + .condition__select-label::before {
+.condition__select:checked ~ .condition__select-list {
+    display: block;
+}
+
+.condition__select-item.is-selected {
+    background: #5599eb;
+    border-radius: 5px;
+}
+
+.condition__select-item.is-selected::before {
     content: "✔";
     position: absolute;
     font-size: 15px;
     font-weight: bold;
     left: 10px;
-}
-
-.condition__text {
-    display: none;
-}
-
-.condition:not(:has(.condition__select-item:checked)) .default {
-    display: inline;
-}
-
-.condition:has(#condition1:checked) .is-1,
-.condition:has(#condition2:checked) .is-2,
-.condition:has(#condition3:checked) .is-3,
-.condition:has(#condition4:checked) .is-4 {
-    display: inline;
-}
-
-.condition:has(.condition__select-item:checked) .condition__select-list {
-    display: none;
-}
-
-.condition[open] .condition__select:active + .condition__select-list,
-.condition[open] .condition__select-list:hover {
-    display: block;
 }
 
 .form-input {
