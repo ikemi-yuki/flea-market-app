@@ -53,13 +53,15 @@ class SearchTest extends TestCase
             'item_id' => $notMatchingItem->id,
         ]);
 
-        $response = $this->actingAs($user)->get(route('items.index', ['keyword' => '赤']));
+        $this->actingAs($user);
+
+        $response = $this->get(route('items.index', ['keyword' => '赤']));
         $response->assertStatus(200);
 
         $response->assertSee('赤いシャツ');
         $response->assertDontSee('青いズボン');
 
-        $response = $this->actingAs($user)->get(route('items.index', ['tab' => 'mylist', 'keyword' => '赤']));
+        $response = $this->get(route('items.index', ['tab' => 'mylist', 'keyword' => '赤']));
         $response->assertStatus(200);
 
         $response->assertSee('赤いシャツ');

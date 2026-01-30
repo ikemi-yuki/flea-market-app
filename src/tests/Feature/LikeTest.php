@@ -20,12 +20,13 @@ class LikeTest extends TestCase
 
         $item = Item::factory()->create();
 
-        $this->actingAs($user)
-            ->get(route('items.detail', ['item_id' => $item->id]))
-            ->assertStatus(200);
+        $this->actingAs($user);
 
-        $this->post(route('items.like', ['item_id' => $item->id]))
-            ->assertRedirect();
+        $response = $this->get(route('items.detail', ['item_id' => $item->id]));
+        $response->assertStatus(200);
+
+        $response = $this->post(route('items.like', ['item_id' => $item->id]));
+        $response->assertRedirect(route('items.detail', ['item_id' => $item->id]));
 
         $this->assertDatabaseHas('likes', [
             'user_id' => $user->id,
@@ -46,12 +47,13 @@ class LikeTest extends TestCase
 
         $item = Item::factory()->create();
 
-        $this->actingAs($user)
-            ->get(route('items.detail', ['item_id' => $item->id]))
-            ->assertStatus(200);
+        $this->actingAs($user);
 
-        $this->post(route('items.like', ['item_id' => $item->id]))
-            ->assertRedirect();
+        $response = $this->get(route('items.detail', ['item_id' => $item->id]));
+        $response->assertStatus(200);
+
+        $response = $this->post(route('items.like', ['item_id' => $item->id]));
+        $response->assertRedirect(route('items.detail', ['item_id' => $item->id]));
 
         $this->assertDatabaseHas('likes', [
             'user_id' => $user->id,
@@ -82,12 +84,13 @@ class LikeTest extends TestCase
             'item_id' => $item->id,
         ]);
 
-        $this->actingAs($user)
-            ->get(route('items.detail', ['item_id' => $item->id]))
-            ->assertStatus(200);
+        $this->actingAs($user);
 
-        $this->post(route('items.like', ['item_id' => $item->id]))
-            ->assertRedirect();
+        $response = $this->get(route('items.detail', ['item_id' => $item->id]));
+        $response->assertStatus(200);
+
+        $response = $this->post(route('items.like', ['item_id' => $item->id]));
+        $response->assertRedirect(route('items.detail', ['item_id' => $item->id]));
 
         $this->assertDatabaseMissing('likes', [
             'user_id' => $user->id,

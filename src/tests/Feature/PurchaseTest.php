@@ -31,13 +31,15 @@ class PurchaseTest extends TestCase
             'building' => $buyer->profile->building,
         ];
 
-        $response = $this->actingAs($buyer)->get(route('purchase.show', ['item_id' => $item->id]));
+        $this->actingAs($buyer);
+
+        $response = $this->get(route('purchase.show', ['item_id' => $item->id]));
         $response->assertStatus(200);
         $response->assertSee($item->name);
         $response->assertSee(number_format($item->price));
 
         $paymentMethod = Purchase::PAYMENT_METHOD_CONVENIENCE_STORE;
-        $response = $this->actingAs($buyer)->post(route('purchase.store', ['item_id' => $item->id]),[
+        $response = $this->post(route('purchase.store', ['item_id' => $item->id]),[
             'payment_method' => $paymentMethod,
         ]);
 
@@ -74,13 +76,13 @@ class PurchaseTest extends TestCase
             'name' => '購入した商品',
         ]);
 
-        $response = $this->actingAs($buyer)->get(route('purchase.show', ['item_id' => $item->id]));
+        $this->actingAs($buyer);
+
+        $response = $this->get(route('purchase.show', ['item_id' => $item->id]));
         $response->assertStatus(200);
-        $response->assertSee($item->name);
-        $response->assertSee(number_format($item->price));
 
         $paymentMethod = Purchase::PAYMENT_METHOD_CONVENIENCE_STORE;
-        $response = $this->actingAs($buyer)->post(route('purchase.store', ['item_id' => $item->id]),[
+        $response = $this->post(route('purchase.store', ['item_id' => $item->id]),[
             'payment_method' => $paymentMethod,
         ]);
 
@@ -105,19 +107,19 @@ class PurchaseTest extends TestCase
             'user_id' => $seller->id,
         ]);
 
-        $response = $this->actingAs($buyer)->get(route('purchase.show', ['item_id' => $item->id]));
+        $this->actingAs($buyer);
+
+        $response = $this->get(route('purchase.show', ['item_id' => $item->id]));
         $response->assertStatus(200);
-        $response->assertSee($item->name);
-        $response->assertSee(number_format($item->price));
 
         $paymentMethod = Purchase::PAYMENT_METHOD_CONVENIENCE_STORE;
-        $response = $this->actingAs($buyer)->post(route('purchase.store', ['item_id' => $item->id]),[
+        $response = $this->post(route('purchase.store', ['item_id' => $item->id]),[
             'payment_method' => $paymentMethod,
         ]);
 
         $response->assertRedirect(route('items.index'));
 
-        $response = $this->actingAs($buyer)->get(route('mypage.index', ['page' => 'buy']));
+        $response = $this->get(route('mypage.index', ['page' => 'buy']));
         $response->assertStatus(200);
 
         $response->assertSee($item->name);

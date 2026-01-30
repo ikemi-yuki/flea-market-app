@@ -17,8 +17,9 @@ class CommentTest extends TestCase
 
         $item = Item::factory()->create();
 
-        $this->actingAs($user)
-            ->post(route('items.comment', ['item_id' => $item->id]), [
+        $this->actingAs($user);
+
+        $this->post(route('items.comment', ['item_id' => $item->id]), [
             'content' => 'とてもいい商品ですね',
         ]);
 
@@ -55,8 +56,9 @@ class CommentTest extends TestCase
 
         $item = Item::factory()->create();
 
-        $response = $this->actingAs($user)
-            ->post(route('items.comment', ['item_id' => $item->id]), [
+        $this->actingAs($user);
+
+        $response = $this->post(route('items.comment', ['item_id' => $item->id]), [
             'content' => '',
         ]);
 
@@ -76,8 +78,9 @@ class CommentTest extends TestCase
 
         $longComment = str_repeat('あ',256);
 
-        $response = $this->actingAs($user)
-            ->post(route('items.comment', ['item_id' => $item->id]), [
+        $this->actingAs($user);
+
+        $response = $this->post(route('items.comment', ['item_id' => $item->id]), [
             'content' => $longComment,
         ]);
 
