@@ -22,7 +22,7 @@ class ItemFactory extends Factory
             'brand' => $this->faker->optional()->company(),
             'description' => $this->faker->text(255),
             'price' => $this->faker->numberBetween(1,50000),
-            'status' => 1,
+            'status' => Item::STATUS_ON_SALE,
         ];
     }
 }
