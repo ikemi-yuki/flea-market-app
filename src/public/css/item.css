@@ -220,6 +220,13 @@
     border-radius: 5px;
 }
 
+.comment-form__error {
+    height: 18px;
+    font-size: 18px;
+    color: #ff0000;
+    text-align: left;
+}
+
 .comment-form__button {
     width: 100%;
     margin: 50px auto;
@@ -355,6 +362,11 @@
     .comment-form__text {
         height: 220px;
         font-size: 18px;
+    }
+
+    .comment-form__error {
+        height: 16px;
+        font-size: 16px;
     }
 
     .comment-form__button {

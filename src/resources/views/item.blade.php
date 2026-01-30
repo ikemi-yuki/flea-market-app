@@ -72,6 +72,11 @@
             <form class="comment-form" action="{{ route('items.comment', ['item_id' => $item->id]) }}" method="post">
                 @csrf
                 <textarea class="comment-form__text" name="content">{{ old('content') }}</textarea>
+                <div class="comment-form__error">
+                    @error('content')
+                        {{ $message }}
+                    @enderror
+                </div>
                 <div class="comment-form__button">
                     <button class="comment-form__button-submit" type="submit">コメントを送信する</button>
                 </div>

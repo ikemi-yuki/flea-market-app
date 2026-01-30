@@ -21,7 +21,9 @@ class ItemDetailTest extends TestCase
     {
         Storage::fake('public');
 
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'profile_completed' => true,
+        ]);
 
         $profileImage = UploadedFile::fake()->create('profile.jpg', 100);
         $profilePath = $profileImage->store('profiles', 'public');
@@ -75,6 +77,7 @@ class ItemDetailTest extends TestCase
         $response->assertSee('商品の説明文です');
         $response->assertSee('家電');
         $response->assertSee('目立った傷や汚れなし');
+        $response->assertSee('<h3 class="comment">コメント(1)</h3>', false);
         $response->assertSee('storage/' . $profilePath);
         $response->assertSee('山田');
         $response->assertSee('とてもいい商品ですね');
