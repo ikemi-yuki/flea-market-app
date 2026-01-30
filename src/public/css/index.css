@@ -67,7 +67,7 @@
     .tabs {
         height: 40px;
         gap: 35px;
-        margin-top: 30px;
+        margin-top: 40px;
         padding-left: 65px;
     }
 
@@ -79,7 +79,7 @@
     .items {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
-        margin: 45px auto;
+        margin: 60px auto;
     }
 
     .item-card {

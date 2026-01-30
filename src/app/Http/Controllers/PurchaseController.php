@@ -34,7 +34,7 @@ class PurchaseController extends Controller
 
         $address = session('purchase_address');
 
-        if (!$address) {
+        if ($address === null) {
             $address = [
                 'post_code' => $profile->post_code,
                 'address' => $profile->address,
