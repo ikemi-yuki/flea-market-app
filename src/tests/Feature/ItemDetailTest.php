@@ -25,7 +25,7 @@ class ItemDetailTest extends TestCase
             'profile_completed' => true,
         ]);
 
-        $profileImage = UploadedFile::fake()->create('profile.jpg', 100);
+        $profileImage = UploadedFile::fake()->create('profile.jpg', 100, 'image/jpeg');
         $profilePath = $profileImage->store('profiles', 'public');
 
         $profile = Profile::factory()->create([
@@ -38,7 +38,7 @@ class ItemDetailTest extends TestCase
             'name' => '家電',
         ]);
 
-        $itemImage = UploadedFile::fake()->create('item.jpg', 100);
+        $itemImage = UploadedFile::fake()->create('item.jpg', 100, 'image/jpeg');
         $itemPath = $itemImage->store('items', 'public');
 
         $item = Item::factory()->create([
