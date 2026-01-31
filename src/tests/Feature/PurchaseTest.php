@@ -38,7 +38,7 @@ class PurchaseTest extends TestCase
         $response->assertSee($item->name);
         $response->assertSee(number_format($item->price));
 
-        $paymentMethod = Purchase::PAYMENT_METHOD_CONVENIENCE_STORE;
+        $paymentMethod = Purchase::PAYMENT_METHOD_CARD;
         $response = $this->post(route('purchase.store', ['item_id' => $item->id]),[
             'payment_method' => $paymentMethod,
         ]);
@@ -81,7 +81,7 @@ class PurchaseTest extends TestCase
         $response = $this->get(route('purchase.show', ['item_id' => $item->id]));
         $response->assertStatus(200);
 
-        $paymentMethod = Purchase::PAYMENT_METHOD_CONVENIENCE_STORE;
+        $paymentMethod = Purchase::PAYMENT_METHOD_CARD;
         $response = $this->post(route('purchase.store', ['item_id' => $item->id]),[
             'payment_method' => $paymentMethod,
         ]);
@@ -112,7 +112,7 @@ class PurchaseTest extends TestCase
         $response = $this->get(route('purchase.show', ['item_id' => $item->id]));
         $response->assertStatus(200);
 
-        $paymentMethod = Purchase::PAYMENT_METHOD_CONVENIENCE_STORE;
+        $paymentMethod = Purchase::PAYMENT_METHOD_CARD;
         $response = $this->post(route('purchase.store', ['item_id' => $item->id]),[
             'payment_method' => $paymentMethod,
         ]);

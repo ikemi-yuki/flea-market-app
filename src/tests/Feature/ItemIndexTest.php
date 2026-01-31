@@ -28,7 +28,7 @@ class ItemIndexTest extends TestCase
     {
         Item::factory()->create([
             'name' => '購入済みの商品',
-            'status' => 2,
+            'status' => Item::STATUS_SOLD,
         ]);
 
         $response = $this->get(route('items.index'));

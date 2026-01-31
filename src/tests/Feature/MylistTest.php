@@ -46,7 +46,7 @@ class MylistTest extends TestCase
 
         $likedItem = Item::factory()->create([
             'name' => 'いいねした購入済み商品',
-            'status' => 2,
+            'status' => Item::STATUS_SOLD,
         ]);
 
         Like::create([

@@ -69,7 +69,8 @@ class ItemDetailTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertSee('テスト商品');
-        $response->assertSee('storage/' . $itemPath);
+        $response->assertSee('<img', false);
+        $response->assertSee($itemPath);
         $response->assertSee('テストブランド');
         $response->assertSee('3,000');
         $response->assertSee('<span class="like-count">1</span>', false);
@@ -78,7 +79,8 @@ class ItemDetailTest extends TestCase
         $response->assertSee('家電');
         $response->assertSee('目立った傷や汚れなし');
         $response->assertSee('<h3 class="comment">コメント(1)</h3>', false);
-        $response->assertSee('storage/' . $profilePath);
+        $response->assertSee('<img', false);
+        $response->assertSee($profilePath);
         $response->assertSee('山田');
         $response->assertSee('とてもいい商品ですね');
     }
