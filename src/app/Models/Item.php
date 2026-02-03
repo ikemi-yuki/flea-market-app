@@ -12,6 +12,11 @@ class Item extends Model
     public const STATUS_ON_SALE = 1;
     public const STATUS_SOLD = 2;
 
+    public const CONDITION_GOOD = 1;
+    public const CONDITION_NO_NOTICEABLE_DAMAGE = 2;
+    public const CONDITION_SCRATCHED = 3;
+    public const CONDITION_BAD = 4;
+
     protected $fillable = [
         'user_id',
         'name',

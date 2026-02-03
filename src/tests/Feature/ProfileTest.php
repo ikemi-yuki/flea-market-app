@@ -49,17 +49,9 @@ class ProfileTest extends TestCase
             'status' => Item::STATUS_SOLD,
         ]);
 
-        // purchaseテーブルでaddress_idが必須のため最低限作成
-        $address = Address::create([
-            'user_id' => $buyer->id,
-            'shipping_post_code' => '000-0000',
-            'shipping_address' => 'テスト住所',
-        ]);
-
         Purchase::create([
             'user_id' => $buyer->id,
             'item_id' => $purchasedItem->id,
-            'address_id' => $address->id,
             'payment_method' => Purchase::PAYMENT_METHOD_CARD,
         ]);
 

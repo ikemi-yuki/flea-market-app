@@ -41,7 +41,7 @@ class SellTest extends TestCase
         $response = $this->post(route('sell.store'),[
             'image_path' => $image,
             'categories' => [$category1->id, $category2->id],
-            'condition' => 1, // 良好
+            'condition' => Item::CONDITION_GOOD,
             'name' => 'テスト商品',
             'brand' => 'テストブランド',
             'description' => 'テスト商品の説明',
@@ -53,7 +53,7 @@ class SellTest extends TestCase
         $this->assertDatabaseHas('items', [
             'user_id' => $user->id,
             'name' => 'テスト商品',
-            'condition' => 1,
+            'condition' => Item::CONDITION_GOOD,
             'brand' => 'テストブランド',
             'description' => 'テスト商品の説明',
             'price' => 5000,

@@ -77,28 +77,24 @@ class AddressTest extends TestCase
 
         $response->assertRedirect(route('items.index'));
 
+        $purchase = Purchase::first();
+
+        $this->assertNotNull($purchase);
+
         $this->assertDatabaseHas('addresses', [
-            'user_id' => $buyer->id,
+            'purchase_id' => $purchase->id,
             'shipping_post_code' => '123-4567',
             'shipping_address' => '東京都渋谷区1-2-3',
             'shipping_building' => 'テストマンション101号室',
         ]);
 
-        $address = Address::where('user_id', $buyer->id)
-            ->where('shipping_post_code', '123-4567')->first();
-
         $this->assertDatabaseHas('purchases', [
             'user_id' => $buyer->id,
             'item_id' => $item->id,
-            'address_id' => $address->id,
             'payment_method' => $paymentMethod,
         ]);
 
-        $purchase = Purchase::where('user_id', $buyer->id)
-            ->where('item_id', $item->id)
-            ->first();
-
-        $this->assertNotNull($purchase);
-        $this->assertEquals($address->id, $purchase->address->id);
+        $this->assertNotNull($purchase->address);
+        $this->assertEquals('東京都渋谷区1-2-3', $purchase->address->shipping_address);
     }
 }

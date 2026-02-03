@@ -45,19 +45,19 @@ class PurchaseTest extends TestCase
 
         $response->assertRedirect(route('items.index'));
 
-        $this->assertDatabaseHas('addresses', [
-            'user_id' => $buyer->id,
-            'shipping_post_code' => $addressData['post_code'],
-            'shipping_address' => $addressData['address'],
-            'shipping_building' => $addressData['building'],
-        ]);
-
-        $address = Address::first();
-
         $this->assertDatabaseHas('purchases', [
             'user_id' => $buyer->id,
             'item_id' => $item->id,
             'payment_method' => $paymentMethod,
+        ]);
+
+        $purchase = Purchase::first();
+
+        $this->assertDatabaseHas('addresses', [
+            'purchase_id' => $purchase->id,
+            'shipping_post_code' => $addressData['post_code'],
+            'shipping_address' => $addressData['address'],
+            'shipping_building' => $addressData['building'],
         ]);
 
         $this->assertEquals(Item::STATUS_SOLD, $item->fresh()->status);

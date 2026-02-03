@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\Purchase;
-use App\Models\Address;
 use Illuminate\Http\Request;
 use App\Http\Requests\PurchaseRequest;
 use Illuminate\Support\Facades\Auth;
@@ -62,18 +61,16 @@ class PurchaseController extends Controller
             ];
 
         DB::transaction(function () use ($user, $item, $addressData, $request) {
-            $address = Address::create([
+            $purchase = Purchase::create([
                 'user_id' => $user->id,
+                'item_id' => $item->id,
+                'payment_method' => $request->payment_method,
+            ]);
+
+            $purchase->address()->create([
                 'shipping_post_code' => $addressData['post_code'],
                 'shipping_address' => $addressData['address'],
                 'shipping_building' => $addressData['building'],
-            ]);
-
-            Purchase::create([
-                'user_id' => $user->id,
-                'item_id' => $item->id,
-                'address_id' => $address->id,
-                'payment_method' => $request->payment_method,
             ]);
 
             $item->update([

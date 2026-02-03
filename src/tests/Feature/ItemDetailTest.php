@@ -47,7 +47,7 @@ class ItemDetailTest extends TestCase
             'brand' => 'テストブランド',
             'description' => '商品の説明文です',
             'price' => 3000,
-            'condition' => 2, //目立った傷や汚れなし
+            'condition' => Item::CONDITION_NO_NOTICEABLE_DAMAGE,
         ]);
 
         $item->categories()->attach([

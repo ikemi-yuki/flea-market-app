@@ -45,10 +45,10 @@ class ItemController extends Controller
         ])->findOrFail($item_id);
 
         $conditionText = [
-            1 => '良好',
-            2 => '目立った傷や汚れなし',
-            3 => 'やや傷や汚れあり',
-            4 => '状態が悪い'
+            Item::CONDITION_GOOD => '良好',
+            Item::CONDITION_NO_NOTICEABLE_DAMAGE => '目立った傷や汚れなし',
+            Item::CONDITION_SCRATCHED => 'やや傷や汚れあり',
+            Item::CONDITION_BAD => '状態が悪い'
         ];
 
         $likeCount = $item->likes->count();

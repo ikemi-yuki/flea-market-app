@@ -13,9 +13,10 @@ class CreateAddressesTable extends Migration
      */
     public function up()
     {
+        // 購入時の配送先住所
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('purchase_id')->constrained()->cascadeOnDelete();
             $table->string('shipping_post_code');
             $table->string('shipping_address');
             $table->string('shipping_building')->nullable();

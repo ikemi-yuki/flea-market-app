@@ -5,24 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+// 購入時の配送先住所を保持するモデル
 class Address extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'purchase_id',
         'shipping_post_code',
         'shipping_address',
         'shipping_building'
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public function purchase()
     {
-        return $this->hasOne(Purchase::class);
+        return $this->belongsTo(Purchase::class);
     }
 }

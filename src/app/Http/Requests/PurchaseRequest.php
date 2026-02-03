@@ -32,11 +32,11 @@ class PurchaseRequest extends FormRequest
     public function withValidator(Validator $validator)
     {
         $validator->after(function ($validator) {
-            if (!session('purchase_address')) {
+            if (session()->has('purchase_address')) {
                 return;
             }
 
-            $user = auth()->user();
+            $user = $this->user();
             if (
                 $user &&
                 $user->profile &&
