@@ -90,7 +90,6 @@ php artisan migrate --env=testing
 ```
 ```
 php artisan test
-
 ```
 
 ## 使用技術（実行環境）
