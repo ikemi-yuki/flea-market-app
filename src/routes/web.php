@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
@@ -25,9 +26,9 @@ Route::get('/', [ItemController::class, 'index'])->name('items.index')->middlewa
 
 Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('items.detail');
 
-Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('items.like');
+Route::middleware('auth', 'verified', 'profile.completed')->group(function (){
+    Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('items.like');
 
-Route::middleware('auth', 'profile.completed')->group(function (){
     Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])->name('items.comment');
 
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])->name('purchase.show');
@@ -42,12 +43,9 @@ Route::middleware('auth', 'profile.completed')->group(function (){
 
     Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 
-    Route::post('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::get('/sell', [SellController::class, 'index'])->name('sell.index');
 
     Route::post('/sell', [SellController::class, 'store'])->name('sell.store');
 });
-
-
-

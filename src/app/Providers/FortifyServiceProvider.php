@@ -32,6 +32,10 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Fortify::verifyEmailView(function () {
+        return view('auth.verify');
+        });
+
         Fortify::createUsersUsing(CreateNewUser::class);
 
         Fortify::registerView(function () {
@@ -49,7 +53,12 @@ class FortifyServiceProvider extends ServiceProvider
             ->validate();
 
             if (Auth::attempt($request->only('email', 'password'))) {
-                return Auth::user();
+                $user = Auth::user();
+
+                if (!$user->hasVerifiedEmail()) {
+                    return $user;
+                }
+                return $user;
             }
 
             throw ValidationException::withMessages([

@@ -85,7 +85,7 @@ class RegisterTest extends TestCase
         $response->assertSee('パスワードと一致しません');
     }
 
-    public function test_全ての項目が入力されている場合会員情報が登録されプロフィール設定画面に遷移される()
+    public function test_全ての項目が入力されている場合会員情報が登録されメール認証誘導画面に遷移される()
     {
         $response = $this->get(route('register'));
         $response->assertStatus(200);
@@ -102,6 +102,6 @@ class RegisterTest extends TestCase
             'name' => '山田太郎',
         ]);
 
-        $response->assertSee('プロフィール設定');
+        $response->assertSee('認証はこちらから');
     }
 }
