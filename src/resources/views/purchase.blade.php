@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="purchase-payment">
-                <h3 class="purchase-payment__title">支払方法</h3>
+                <h3 class="purchase-payment__title">支払い方法</h3>
                 <div class="payment">
                     <input class="payment__select" type="checkbox" id="payment-toggle" hidden>
                     <label class="payment__select-label" for="payment-toggle">
@@ -64,7 +64,7 @@
                             <td class="subtotal-table__price"><span class="subtotal-table__price--yen">￥</span>{{ number_format($item->price) }}</td>
                         </tr>
                         <tr class="subtotal-table__row">
-                            <th class="subtotal-table__header">支払方法</th>
+                            <th class="subtotal-table__header">支払い方法</th>
                             <td class="subtotal-table__payment" id="subtotal-payment">
                                 {{ $paymentMethod == 2 ? 'カード支払い' : 'コンビニ払い' }}
                             </td>

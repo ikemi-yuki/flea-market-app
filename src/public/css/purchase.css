@@ -95,7 +95,7 @@
 }
 
 .payment__select-item {
-    padding: 6px 40px;
+    padding: 6px 25px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -115,9 +115,10 @@
 .payment__select-item.is-selected::before {
     content: "✔";
     position: absolute;
-    font-size: 12px;
+    font-size: 18px;
     font-weight: bold;
-    left: 4px;
+    left: 6px;
+    top: 2px;
 }
 
 .purchase-address {
