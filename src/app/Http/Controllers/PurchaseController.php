@@ -49,8 +49,8 @@ class PurchaseController extends Controller
         $user = Auth::user();
         $item = Item::findOrFail($item_id);
 
-        if ($item->status === Item::STATUS_SOLD) {
-            abort(403, 'この商品は購入済みです');
+        if ($item->status !== Item::STATUS_ON_SALE) {
+            abort(403, 'この商品は購入できません');
         }
 
         $addressData = session('purchase_address')
@@ -60,11 +60,13 @@ class PurchaseController extends Controller
                 'building' => $user->profile->building,
             ];
 
-        DB::transaction(function () use ($user, $item, $addressData, $request) {
+        $paymentMethod = (int) $request->payment_method;
+
+        DB::transaction(function () use ($user, $item, $addressData, $paymentMethod) {
             $purchase = Purchase::create([
                 'user_id' => $user->id,
                 'item_id' => $item->id,
-                'payment_method' => $request->payment_method,
+                'payment_method' => $paymentMethod,
             ]);
 
             $purchase->address()->create([
@@ -73,8 +75,13 @@ class PurchaseController extends Controller
                 'shipping_building' => $addressData['building'],
             ]);
 
+            // テスト環境ではStripe通信は行わず、購入完了として扱う
+            $isTesting = app()->environment('testing');
+
             $item->update([
-                'status' => Item::STATUS_SOLD,
+                'status' => $isTesting || $paymentMethod !== Purchase::PAYMENT_METHOD_CARD
+                    ? Item::STATUS_SOLD
+                    : Item::STATUS_IN_PROGRESS,
             ]);
         });
 
@@ -82,6 +89,48 @@ class PurchaseController extends Controller
             'purchase_address',
             'payment_method',
         ]);
+
+        if (app()->environment('testing')) {
+            return redirect()->route('items.index');
+        }
+
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        $session = CheckoutSession::create([
+            'payment_method_types' => $paymentMethod === Purchase::PAYMENT_METHOD_CARD ? ['card'] : ['konbini'],
+
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'jpy',
+                    'product_data' => [
+                        'name' => $item->name,
+                    ],
+                    'unit_amount' => $item->price,
+                ],
+                'quantity' => 1,
+            ]],
+
+            'mode' => 'payment',
+
+            'success_url' => $paymentMethod === Purchase::PAYMENT_METHOD_CARD
+            ? route('purchase.success', ['item_id' => $item->id])
+            : route('items.index'),
+
+            'cancel_url' => route('items.index'),
+        ]);
+
+        return redirect($session->url);
+    }
+
+    public function success($item_id)
+    {
+        $item = Item::findOrFail($item_id);
+
+        if ($item->status === Item::STATUS_IN_PROGRESS) {
+            $item->update([
+                'status' => Item::STATUS_SOLD,
+            ]);
+        }
 
         return redirect()->route('items.index');
     }

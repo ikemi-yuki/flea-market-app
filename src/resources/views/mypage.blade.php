@@ -34,9 +34,6 @@
                     <p class="item-card__name">
                         {{ $item->name }}
                     </p>
-                    @if ($item->status === 2)
-                        <p class="item-card__status"> Sold</p>
-                    @endif
                 </div>
             </div>
         @endforeach

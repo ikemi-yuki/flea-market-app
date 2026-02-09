@@ -105,12 +105,6 @@
     margin-top: 5px;
 }
 
-.item-card__status {
-    font-size: 20px;
-    color: #ff0000;
-    margin-top: 5px;
-}
-
 @media screen and (max-width: 850px) {
     .mypage {
         margin: 60px auto;
@@ -162,10 +156,4 @@
         font-size: 20px;
         margin-top: 3px;
     }
-
-    .item-card__status {
-        font-size: 16px;
-        margin-top: 3px;
-    }
-
 }

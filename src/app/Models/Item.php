@@ -10,12 +10,21 @@ class Item extends Model
     use HasFactory;
 
     public const STATUS_ON_SALE = 1;
-    public const STATUS_SOLD = 2;
+    public const STATUS_IN_PROGRESS = 2;
+    public const STATUS_SOLD = 3;
 
     public const CONDITION_GOOD = 1;
     public const CONDITION_NO_NOTICEABLE_DAMAGE = 2;
     public const CONDITION_SCRATCHED = 3;
     public const CONDITION_BAD = 4;
+
+    public function isSoldForDisplay(): bool
+    {
+        return in_array($this->status, [
+            self::STATUS_IN_PROGRESS,
+            self::STATUS_SOLD,
+        ], true);
+    }
 
     protected $fillable = [
         'user_id',

@@ -44,6 +44,9 @@ DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
 ```
 
+本アプリではStripe Checkoutを使用しています。<br>
+Stripeのテスト用APIキーを `.env` に設定してください。
+
 #### キー生成
 
 ```
@@ -62,7 +65,9 @@ php artisan storage:link
 php artisan db:seed
 ```
 
-## テスト環境のセットアップ
+## Featureテスト
+
+※ Feature テストでは `demo_test` データベースを使用します。
 
 #### .env.testing ファイルの作成
 
@@ -73,10 +78,6 @@ cp .env.testing.example .env.testing
 #### .env.testing ファイルの修正
 
 ```
-DB_DATABASE=demo_test
-
-DB_USERNAME=root
-
 DB_PASSWORD=root
 ```
 
@@ -92,11 +93,39 @@ php artisan migrate --env=testing
 php artisan test
 ```
 
+## Duskテスト
+
+※ Dusk テストでは `laravel_dusk` データベースを使用します
+
+#### .env.dusk.local ファイルの作成
+
+```
+cp .env.dusk.local.example .env.dusk.local
+```
+
+#### .env.dusk.local ファイルの修正
+
+```
+DB_PASSWORD=root
+```
+
+#### キー生成・マイグレーション・テスト実行
+
+```
+php artisan key:generate --env=dusk.local
+```
+```
+php artisan migrate --env=dusk.local
+```
+```
+php artisan dusk
+```
+
 ## 使用技術（実行環境）
 
 フレームワーク: Laravel:8.83.8
 
-言語：HTML CSS Javascript PHP
+言語：HTML CSS JavaScript PHP
 
 Webサーバー: Nginx:1.21.1
 
