@@ -118,7 +118,8 @@
         justify-content: center;
     }
 
-    .profile__image-preview, .profile__image-default {
+    .profile__image-preview,
+    .profile__image-default {
         width: 100px;
         height: 100px;
     }

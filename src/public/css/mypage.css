@@ -114,7 +114,8 @@
         margin-left: 70px;
     }
 
-    .mypage-user__img, .profile__image-default {
+    .mypage-user__img,
+    .profile__image-default {
         width: 100px;
         height: 100px;
     }
@@ -137,7 +138,8 @@
         padding-left: 65px;
     }
 
-    .mypage__tab, .mypage__tab--active {
+    .mypage__tab,
+    .mypage__tab--active {
         width: 120px;
         font-size: 20px;
     }

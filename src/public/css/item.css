@@ -294,7 +294,8 @@
         height: 30px;
     }
 
-    .like-count, .comment-count {
+    .like-count,
+    .comment-count {
         font-size: 16px;
     }
 
@@ -309,7 +310,8 @@
         font-size: 26px;
     }
 
-    .item-detail__description, .item-detail__info {
+    .item-detail__description,
+    .item-detail__info {
         font-size: 30px;
     }
 
@@ -342,7 +344,8 @@
         margin-bottom: 25px;
     }
 
-    .comment-user__img, .profile__image-default {
+    .comment-user__img,
+    .profile__image-default {
         width: 60px;
         height: 60px;
     }

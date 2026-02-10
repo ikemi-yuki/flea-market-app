@@ -10,15 +10,25 @@
             <img class="item-detail__image" src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
         </div>
         <div class="item-detail__content">
-            <h2 class="item-detail__name">{{ $item->name }}</h2>
-            <p class="item-detail__brand">{{ $item->brand }}</p>
-            <p class="item-detail__price"><span class="item-detail__price--yen">¥</span>{{ number_format($item->price) }}<span class="item-detail__price--tax">(税込)</span></p>
+            <h2 class="item-detail__name">
+                {{ $item->name }}
+            </h2>
+            <p class="item-detail__brand">
+                {{ $item->brand }}
+            </p>
+            <p class="item-detail__price">
+                <span class="item-detail__price--yen">¥</span>
+                {{ number_format($item->price) }}
+                <span class="item-detail__price--tax">(税込)</span>
+            </p>
             <div class="item-detail__reactions">
                 <div class="item-detail__like">
                     @auth
                         <form class="like-form" action="{{ route('items.like', ['item_id' => $item->id]) }}" method="post">
                             @csrf
-                            <button class="like-button" type="submit"><img class="like-icon" src="{{ asset($isLiked ? 'images/heart-logo_pink.png' : 'images/heart-logo_default.png') }}" alt="いいね"></button>
+                            <button class="like-button" type="submit">
+                                <img class="like-icon" src="{{ asset($isLiked ? 'images/heart-logo_pink.png' : 'images/heart-logo_default.png') }}" alt="いいね">
+                            </button>
                         </form>
                     @else
                         <img class="like-icon" src="{{ asset('images/heart-logo_default.png') }}" alt="いいね">
@@ -31,10 +41,14 @@
                 </div>
             </div>
             <div class="item-purchase">
-                <a class="item-purchase__button" href="{{ route('purchase.show', ['item_id' => $item->id]) }}">購入手続きへ</a>
+                <a class="item-purchase__button" href="{{ route('purchase.show', ['item_id' => $item->id]) }}">
+                    購入手続きへ
+                </a>
             </div>
             <h3 class="item-detail__description">商品説明</h3>
-            <p class="item-detail__description-text">{{ $item->description }}</p>
+            <p class="item-detail__description-text">
+                {{ $item->description }}
+            </p>
             <h3 class="item-detail__info">商品の情報</h3>
             <div class="info-table">
                 <table class="info-table__inner">

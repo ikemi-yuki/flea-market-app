@@ -71,7 +71,8 @@
         padding-left: 65px;
     }
 
-    .item__tab, .item__tab--active {
+    .item__tab,
+    .item__tab--active {
         width: 100px;
         font-size: 20px;
     }
@@ -95,5 +96,4 @@
         font-size: 16px;
         margin-top: 3px;
     }
-
 }

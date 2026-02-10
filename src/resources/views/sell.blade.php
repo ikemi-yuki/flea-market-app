@@ -38,10 +38,18 @@
                         <span class="condition__select-text" id="select-text">選択してください</span>
                     </label>
                     <ul class="condition__select-list">
-                        <li class="condition__select-item" data-value="1" data-selected="{{ old('condition') == 1 ? 'true' : 'false' }}">良好</li>
-                        <li class="condition__select-item" data-value="2" data-selected="{{ old('condition') == 2 ? 'true' : 'false' }}">目立った傷や汚れなし</li>
-                        <li class="condition__select-item" data-value="3" data-selected="{{ old('condition') == 3 ? 'true' : 'false' }}">やや傷や汚れあり</li>
-                        <li class="condition__select-item" data-value="4" data-selected="{{ old('condition') == 4 ? 'true' : 'false' }}">状態が悪い</li>
+                        <li class="condition__select-item" data-value="1" data-selected="{{ old('condition') == 1 ? 'true' : 'false' }}">
+                            良好
+                        </li>
+                        <li class="condition__select-item" data-value="2" data-selected="{{ old('condition') == 2 ? 'true' : 'false' }}">
+                            目立った傷や汚れなし
+                        </li>
+                        <li class="condition__select-item" data-value="3" data-selected="{{ old('condition') == 3 ? 'true' : 'false' }}">
+                            やや傷や汚れあり
+                        </li>
+                        <li class="condition__select-item" data-value="4" data-selected="{{ old('condition') == 4 ? 'true' : 'false' }}">
+                            状態が悪い
+                        </li>
                     </ul>
                     <input type="hidden" name="condition" id="condition-input" value="{{ old('condition') }}">
                 </div>

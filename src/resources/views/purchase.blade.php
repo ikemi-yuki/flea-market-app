@@ -13,7 +13,10 @@
                 </div>
                 <div class="purchase-item__content">
                     <h2 class="purchase-item__name">{{ $item->name }}</h2>
-                    <p class="purchase-item__price"><span class="purchase-item__price--yen">￥</span>{{ number_format($item->price) }}</p>
+                    <p class="purchase-item__price">
+                        <span class="purchase-item__price--yen">￥</span>
+                        {{ number_format($item->price) }}
+                    </p>
                 </div>
             </div>
             <div class="purchase-payment">
@@ -30,8 +33,12 @@
                         </span>
                     </label>
                     <ul class="payment__select-list">
-                        <li class="payment__select-item" data-value="1" data-selected="{{ $paymentMethod == 1 ? 'true' : 'false' }}">コンビニ払い</li>
-                        <li class="payment__select-item" data-value="2" data-selected="{{ $paymentMethod == 2 ? 'true' : 'false' }}">カード支払い</li>
+                        <li class="payment__select-item" data-value="1" data-selected="{{ $paymentMethod == 1 ? 'true' : 'false' }}">
+                            コンビニ払い
+                        </li>
+                        <li class="payment__select-item" data-value="2" data-selected="{{ $paymentMethod == 2 ? 'true' : 'false' }}">
+                            カード支払い
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -47,9 +54,9 @@
                     <p class="purchase-address__item-post">〒 {{ $address['post_code'] }}</p>
                     <p class="purchase-address__item-address">
                         {{ $address['address'] }}
-                            @if (!empty($address['building']))
-                                {{ $address['building'] }}
-                            @endif
+                        @if (!empty($address['building']))
+                            {{ $address['building'] }}
+                        @endif
                     </p>
                 </div>
             </div>
@@ -61,7 +68,10 @@
                     <table class="subtotal-table__inner">
                         <tr class="subtotal-table__row">
                             <th class="subtotal-table__header">商品代金</th>
-                            <td class="subtotal-table__price"><span class="subtotal-table__price--yen">￥</span>{{ number_format($item->price) }}</td>
+                            <td class="subtotal-table__price">
+                                <span class="subtotal-table__price--yen">￥</span>
+                                {{ number_format($item->price) }}
+                            </td>
                         </tr>
                         <tr class="subtotal-table__row">
                             <th class="subtotal-table__header">支払い方法</th>

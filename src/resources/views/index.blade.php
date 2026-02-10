@@ -27,7 +27,7 @@
                             {{ $item->name }}
                         </p>
                         @if ($item->isSoldForDisplay())
-                            <p class="item-card__status"> Sold</p>
+                            <p class="item-card__status">Sold</p>
                         @endif
                     </div>
                 </div>

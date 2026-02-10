@@ -28,7 +28,6 @@
                 @csrf
                 <button class="verify__form-link" type="submit">認証メールを再送する</button>
             </form>
-
         </div>
     </main>
 </body>

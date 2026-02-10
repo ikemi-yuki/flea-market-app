@@ -256,7 +256,8 @@
         margin-top: 35px;
     }
 
-    .form-label {
+    .form-label,
+    .price-input__yen {
         font-size: 22px;
     }
 
@@ -269,10 +270,6 @@
         margin-top: 25px;
         column-gap: 15px;
         row-gap: 28px;
-    }
-
-    .price-input__yen {
-        font-size: 22px;
     }
 
     .form__button {

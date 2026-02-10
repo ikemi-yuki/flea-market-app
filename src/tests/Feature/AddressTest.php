@@ -1,10 +1,10 @@
 <?php
 
 namespace Tests\Feature;
+
 use App\Models\User;
 use App\Models\Item;
 use App\Models\Purchase;
-use App\Models\Address;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;

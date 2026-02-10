@@ -298,7 +298,8 @@
         height: 100px;
     }
 
-    .subtotal-table__header, .subtotal-table__price--yen {
+    .subtotal-table__header,
+    .subtotal-table__price--yen {
         font-size: 18px;
     }
 
