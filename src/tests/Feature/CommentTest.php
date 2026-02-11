@@ -20,6 +20,11 @@ class CommentTest extends TestCase
 
         $this->actingAs($user);
 
+        $response = $this->get(route('items.detail', ['item_id' => $item->id]));
+        $response->assertStatus(200);
+
+        $response->assertSee('<span class="comment-count">0</span>', false);
+
         $this->post(route('items.comment', ['item_id' => $item->id]), [
             'content' => 'とてもいい商品ですね',
         ]);

@@ -19,7 +19,6 @@ class ItemIndexTest extends TestCase
         $response = $this->get(route('items.index'));
         $response->assertStatus(200);
 
-        $items = Item::all();
         foreach ($items as $item) {
             $response->assertSee($item->name);
         }

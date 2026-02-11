@@ -71,6 +71,7 @@ class AddressTest extends TestCase
         $response->assertStatus(200);
 
         $paymentMethod = Purchase::PAYMENT_METHOD_CONVENIENCE_STORE;
+
         $response = $this->post(route('purchase.store', ['item_id' => $item->id]),[
             'payment_method' => $paymentMethod,
         ]);

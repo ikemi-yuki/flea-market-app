@@ -26,6 +26,8 @@ class LikeTest extends TestCase
         $response = $this->get(route('items.detail', ['item_id' => $item->id]));
         $response->assertStatus(200);
 
+        $response->assertSee('<span class="like-count">0</span>', false);
+
         $response = $this->post(route('items.like', ['item_id' => $item->id]));
         $response->assertRedirect(route('items.detail', ['item_id' => $item->id]));
 
@@ -89,6 +91,8 @@ class LikeTest extends TestCase
 
         $response = $this->get(route('items.detail', ['item_id' => $item->id]));
         $response->assertStatus(200);
+
+        $response->assertSee('<span class="like-count">1</span>', false);
 
         $response = $this->post(route('items.like', ['item_id' => $item->id]));
         $response->assertRedirect(route('items.detail', ['item_id' => $item->id]));

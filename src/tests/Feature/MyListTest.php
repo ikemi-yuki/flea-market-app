@@ -64,8 +64,17 @@ class MyListTest extends TestCase
 
     public function test_未認証の場合は何も表示されない()
     {
+        $user = User::factory()->create([
+            'profile_completed' => true,
+        ]);
+
         $likedItem = Item::factory()->create([
             'name' => 'いいねした商品',
+        ]);
+
+        Like::create([
+            'user_id' => $user->id,
+            'item_id' => $likedItem->id,
         ]);
 
         $response = $this->get(route('items.index', ['tab' => 'mylist']));

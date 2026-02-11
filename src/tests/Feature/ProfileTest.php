@@ -30,7 +30,7 @@ class ProfileTest extends TestCase
         ]);
 
         $profileImage = UploadedFile::fake()->create('profile.jpg', 100);
-        $profilePath = $profileImage->store('profiles', 'public');
+        $profilePath = $profileImage->store('profile_icons', 'public');
 
         $buyerProfile = Profile::factory()->create([
             'user_id' => $buyer->id,
@@ -60,8 +60,7 @@ class ProfileTest extends TestCase
         $response = $this->get(route('mypage.index'));
         $response->assertStatus(200);
 
-        $response->assertSee('<img', false);
-        $response->assertSee($profilePath);
+        $response->assertSee('src="' . $buyerProfile->icon_url . '"', false);
         $response->assertSee('山田');
 
         $sellResponse = $this->get(route('mypage.index', ['page' => 'sell']));
@@ -87,7 +86,7 @@ class ProfileTest extends TestCase
         ]);
 
         $profileImage = UploadedFile::fake()->create('profile.jpg', 100);
-        $profilePath = $profileImage->store('profiles', 'public');
+        $profilePath = $profileImage->store('profile_icons', 'public');
 
         $profile = Profile::factory()->create([
             'user_id' => $user->id,
@@ -101,8 +100,7 @@ class ProfileTest extends TestCase
         $response = $this->actingAs($user)->get(route('profile.edit'));
         $response->assertStatus(200);
 
-        $response->assertSee('<img', false);
-        $response->assertSee($profilePath);
+        $response->assertSee('src="' . $profile->icon_url . '"', false);
         $response->assertSee('山田');
         $response->assertSee('123-4567');
         $response->assertSee('東京都渋谷区1-2-3');

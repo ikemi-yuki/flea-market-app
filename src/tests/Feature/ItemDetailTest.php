@@ -20,6 +20,7 @@ class ItemDetailTest extends TestCase
 
     public function test_必要な情報が表示される()
     {
+        // 商品画像、プロフィール画像表示用
         Storage::fake('public');
 
         $user = User::factory()->create([
@@ -27,7 +28,7 @@ class ItemDetailTest extends TestCase
         ]);
 
         $profileImage = UploadedFile::fake()->create('profile.jpg', 100, 'image/jpeg');
-        $profilePath = $profileImage->store('profiles', 'public');
+        $profilePath = $profileImage->store('profile_icons', 'public');
 
         $profile = Profile::factory()->create([
             'user_id' => $user->id,
@@ -70,8 +71,7 @@ class ItemDetailTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertSee('テスト商品');
-        $response->assertSee('<img', false);
-        $response->assertSee($itemPath);
+        $response->assertSee('src="' . $item->image_url . '"', false);
         $response->assertSee('テストブランド');
         $response->assertSee('3,000');
         $response->assertSee('<span class="like-count">1</span>', false);
@@ -80,8 +80,7 @@ class ItemDetailTest extends TestCase
         $response->assertSee('家電');
         $response->assertSee('目立った傷や汚れなし');
         $response->assertSee('<h3 class="comment">コメント(1)</h3>', false);
-        $response->assertSee('<img', false);
-        $response->assertSee($profilePath);
+        $response->assertSee('src="' . $profile->icon_url . '"', false);
         $response->assertSee('山田');
         $response->assertSee('とてもいい商品ですね');
     }
