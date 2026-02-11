@@ -23,16 +23,12 @@
             </p>
             <div class="item-detail__reactions">
                 <div class="item-detail__like">
-                    @auth
-                        <form class="like-form" action="{{ route('items.like', ['item_id' => $item->id]) }}" method="post">
-                            @csrf
-                            <button class="like-button" type="submit">
-                                <img class="like-icon" src="{{ asset($isLiked ? 'images/heart-logo_pink.png' : 'images/heart-logo_default.png') }}" alt="いいね">
-                            </button>
-                        </form>
-                    @else
-                        <img class="like-icon" src="{{ asset('images/heart-logo_default.png') }}" alt="いいね">
-                    @endauth
+                    <form class="like-form" action="{{ route('items.like', ['item_id' => $item->id]) }}" method="post">
+                        @csrf
+                        <button class="like-button" type="submit">
+                            <img class="like-icon" src="{{ asset($isLiked ? 'images/heart-logo_pink.png' : 'images/heart-logo_default.png') }}" alt="いいね">
+                        </button>
+                    </form>
                     <span class="like-count">{{ $likeCount }}</span>
                 </div>
                 <div class="item-detail__comment">

@@ -12,6 +12,8 @@ git clone git@github.com:ikemi-yuki/flea-market-app.git
 
 #### Laravelのビルド
 
+DockerDesktopアプリを立ち上げる
+
 ```
 docker-compose up -d --build
 ```
@@ -21,7 +23,6 @@ docker-compose up -d --build
 ```
 docker-compose exec php bash
 ```
-
 ```
 composer install
 ```
@@ -81,6 +82,24 @@ cp .env.testing.example .env.testing
 DB_PASSWORD=root
 ```
 
+#### `demo_test` データベースの作成（ホスト側で実行）
+
+```
+docker-compose exec mysql bash
+```
+```
+mysql -u root -p
+```
+```
+CREATE DATABASE demo_test;
+```
+※ データベース作成時にエラーが出る場合は、
+MySQLコンテナを再起動してください。
+
+```
+docker-compose restart mysql
+```
+
 #### キー生成・マイグレーション・テスト実行
 
 ```
@@ -107,6 +126,24 @@ cp .env.dusk.local.example .env.dusk.local
 
 ```
 DB_PASSWORD=root
+```
+
+#### `laravel_dusk` データベースの作成（ホスト側で実行）
+
+```
+docker-compose exec mysql bash
+```
+```
+mysql -u root -p
+```
+```
+CREATE DATABASE laravel_dusk;
+```
+※ データベース作成時にエラーが出る場合は、
+MySQLコンテナを再起動してください。
+
+```
+docker-compose restart mysql
 ```
 
 #### キー生成・マイグレーション・テスト実行
