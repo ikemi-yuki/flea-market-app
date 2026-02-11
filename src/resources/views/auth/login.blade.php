@@ -12,7 +12,7 @@
         <div class="header__content">
             <h1 class=header__logo>
                 <a href="{{ route('items.index') }}">
-                    <img class="header__logo-img" src="{{ asset('images/COACHTECH-header-logo.png') }}" alt="COACHTECH">
+                    <img class="header__logo-img" src="{{ asset('images/logos/COACHTECH-header-logo.png') }}" alt="COACHTECH">
                 </a>
             </h1>
         </div>

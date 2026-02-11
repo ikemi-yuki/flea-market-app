@@ -8,7 +8,7 @@
     <div class="mypage">
         <div class="mypage-user">
             @if ($user->profile->icon_path)
-                <img class="mypage-user__img" src="{{ asset('storage/' . ($user->profile->icon_path)) }}" alt="プロフィール画像">
+                <img class="mypage-user__img" src="{{ $user->profile->icon_url }}" alt="プロフィール画像">
             @else
                 <div class="profile__image-default"></div>
             @endif
@@ -29,7 +29,7 @@
     <div class="items">
         @foreach ($items as $item)
             <div class="item-card">
-                <img class="item-card__img" src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
+                <img class="item-card__img" src="{{ $item->image_url }}" alt="{{ $item->name }}">
                 <div class="item-card__info">
                     <p class="item-card__name">
                         {{ $item->name }}

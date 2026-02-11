@@ -7,7 +7,7 @@
 @section('content')
     <div class="item-detail">
         <div class="item-detail__image-wrapper">
-            <img class="item-detail__image" src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
+            <img class="item-detail__image" src="{{ $item->image_url }}" alt="{{ $item->name }}">
         </div>
         <div class="item-detail__content">
             <h2 class="item-detail__name">
@@ -26,13 +26,13 @@
                     <form class="like-form" action="{{ route('items.like', ['item_id' => $item->id]) }}" method="post">
                         @csrf
                         <button class="like-button" type="submit">
-                            <img class="like-icon" src="{{ asset($isLiked ? 'images/heart-logo_pink.png' : 'images/heart-logo_default.png') }}" alt="いいね">
+                            <img class="like-icon" src="{{ asset($isLiked ? 'images/logos/heart-logo_pink.png' : 'images/logos/heart-logo_default.png') }}" alt="いいね">
                         </button>
                     </form>
                     <span class="like-count">{{ $likeCount }}</span>
                 </div>
                 <div class="item-detail__comment">
-                    <img class="comment-icon" src="{{ asset('images/speech-bubble-logo.png') }}" alt="コメント">
+                    <img class="comment-icon" src="{{ asset('images/logos/speech-bubble-logo.png') }}" alt="コメント">
                     <span class="comment-count">{{ $commentCount }}</span>
                 </div>
             </div>
@@ -68,7 +68,7 @@
             @foreach ($item->comments as $comment)
                 <div class="comment-user">
                     @if ($comment->user->profile->icon_path)
-                        <img class="comment-user__img" src="{{ asset('storage/' . ($comment->user->profile->icon_path)) }}" alt="プロフィール画像">
+                        <img class="comment-user__img" src="{{ $comment->user->profile->icon_url }}" alt="プロフィール画像">
                     @else
                         <div class="profile__image-default"></div>
                     @endif

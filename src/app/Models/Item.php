@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Item extends Model
 {
@@ -24,6 +25,15 @@ class Item extends Model
             self::STATUS_IN_PROGRESS,
             self::STATUS_SOLD,
         ], true);
+    }
+
+    public function getImageUrlAttribute()
+    {
+        $path = $this->image_path;
+        if (file_exists(public_path('images/' . $path))) {
+            return asset('images/' . $path);
+        }
+        return Storage::url($path);
     }
 
     protected $fillable = [

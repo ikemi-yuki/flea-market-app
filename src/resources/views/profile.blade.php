@@ -15,7 +15,7 @@
             <div class="form__group">
                 <div class="profile__image">
                     @if ($profile && $profile->icon_path)
-                        <img class="profile__image-preview" src="{{ asset('storage/' . $profile->icon_path) }}" alt="プロフィール画像">
+                        <img class="profile__image-preview" src="{{ $profile->icon_url }}" alt="プロフィール画像">
                     @else
                         <div class="profile__image-default"></div>
                     @endif
