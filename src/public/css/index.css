@@ -63,7 +63,7 @@
     margin-top: 5px;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (min-width:768px) and (max-width: 850px) {
     .tabs {
         height: 40px;
         gap: 35px;
