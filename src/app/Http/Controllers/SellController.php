@@ -40,7 +40,7 @@ class SellController extends Controller
 
             $item->categories()->sync(
                 $request->input('categories', [])
-                );
+            );
 
             DB::commit();
 
