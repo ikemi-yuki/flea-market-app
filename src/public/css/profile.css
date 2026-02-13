@@ -19,7 +19,7 @@
     text-align: center;
 }
 
-.form__group {
+.form-group {
     width: 100%;
     margin-top: 50px;
 }
@@ -44,6 +44,10 @@
     background-color: #d9d9d9;
 }
 
+.is-hidden {
+    display: none;
+}
+
 .profile__image-select {
     margin-left: 40px;
     border: 2px solid #ff5555;
@@ -59,7 +63,7 @@
     cursor: pointer;
 }
 
-.form__group-title {
+.form-group__title {
     text-align: left;
     font-size: 24px;
     font-weight: bold;
@@ -110,7 +114,7 @@
         width: 60%;
     }
 
-    .form__group {
+    .form-group {
         margin-top: 30px;
     }
 
@@ -133,7 +137,7 @@
         font-size: 18px;
     }
 
-    .form__group-title {
+    .form-group__title {
         font-size: 22px;
     }
 

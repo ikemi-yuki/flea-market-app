@@ -24,16 +24,16 @@
     margin-top: 36px;
 }
 
-.form-label {
+.form-group__label {
     display: block;
     text-align: left;
     font-size: 24px;
     font-weight: bold;
 }
 
-.form-image {
+.form-item__image {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
     height: 150px;
@@ -41,7 +41,7 @@
     border-radius: 4px;
 }
 
-.image-label {
+.item__image-label {
     display: block;
     width: 165px;
     border: 2px solid #ff5555;
@@ -51,6 +51,16 @@
     font-weight: bold;
     padding: 10px;
     cursor: pointer;
+}
+
+.item__image-preview {
+    width: 140px;
+    height: 140px;
+    border-radius: 4px;
+}
+
+.is-hidden {
+    display: none;
 }
 
 .form-group__title {
@@ -165,7 +175,7 @@
     top: 2px;
 }
 
-.form-input {
+.form-group__input {
     width: 100%;
     height: 45px;
     margin-top: 7px;
@@ -256,7 +266,7 @@
         margin-top: 35px;
     }
 
-    .form-label,
+    .form-group__label,
     .price-input__yen {
         font-size: 22px;
     }

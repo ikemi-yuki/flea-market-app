@@ -12,15 +12,16 @@
         <form class="sell__form" action="{{ route('sell.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label class="form-label">商品画像</label>
-                <div class="form-image">
-                    <label class="image-label" for="item-image">画像を選択する</label>
+                <label class="form-group__label">商品画像</label>
+                <div class="form-item__image">
+                    <img id="item-preview" class="item__image-preview is-hidden">
+                    <label class="item__image-label" for="item-image">画像を選択する</label>
                     <input type="file" name="image_path" id="item-image" hidden>
                 </div>
             </div>
             <h3 class="form-group__title">商品の詳細</h3>
             <div class="form-group">
-                <label class="form-label">カテゴリー</label>
+                <label class="form-group__label">カテゴリー</label>
                 <div class="category-group">
                     @foreach ($categories as $category)
                         <label class="category-label">
@@ -31,7 +32,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="form-label">商品の状態</label>
+                <label class="form-group__label">商品の状態</label>
                 <div class="condition">
                     <input class="condition__select" type="checkbox" id="condition-toggle" hidden>
                     <label class="condition__select-label" for="condition-toggle">
@@ -56,19 +57,19 @@
             </div>
             <h3 class="form-group__title">商品名と説明</h3>
             <div class="form-group">
-                <label class="form-label">商品名</label>
-                <input class="form-input" type="text" name="name" value="{{ old('name') }}">
+                <label class="form-group__label">商品名</label>
+                <input class="form-group__input" type="text" name="name" value="{{ old('name') }}">
             </div>
             <div class="form-group">
-                <label class="form-label">ブランド名</label>
-                <input class="form-input" type="text" name="brand" value="{{ old('brand') }}">
+                <label class="form-group__label">ブランド名</label>
+                <input class="form-group__input" type="text" name="brand" value="{{ old('brand') }}">
             </div>
             <div class="form-group">
-                <label class="form-label">商品の説明</label>
+                <label class="form-group__label">商品の説明</label>
                 <textarea class="form-textarea" name="description">{{ old('description') }}</textarea>
             </div>
             <div class="form-group">
-                <label class="form-label">販売価格</label>
+                <label class="form-group__label">販売価格</label>
                 <div class="price-input">
                     <span class="price-input__yen">¥</span>
                     <input class="price-input__field" type="number" name="price" value="{{ old('price') }}">
@@ -83,6 +84,18 @@
 
 @push('scripts')
     <script>
+        document.getElementById('item-image').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            if (!file.type.startsWith('image/')) return;
+
+            const preview = document.getElementById('item-preview');
+
+            preview.src = URL.createObjectURL(file);
+            preview.classList.remove('is-hidden');
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
             const selectedValue = document.getElementById('condition-input').value;
 
