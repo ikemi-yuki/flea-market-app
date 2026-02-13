@@ -12,6 +12,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Fortify;
+use Illuminate\Support\Facades\URL;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -28,18 +29,28 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Fortify::verifyEmailView(function () {
-        return view('auth.verify');
+        Fortify::verifyEmailView(function (Request $request) {
+            $user = $request->user();
+
+            $verificationUrl = URL::temporarySignedRoute(
+                'verification.verify',
+                now()->addMinutes(60),
+                [
+                    'id' => $user->id,
+                    'hash' => sha1($user->getEmailForVerification()),
+                ]
+            );
+            return view('auth.verify', compact('verificationUrl'));
         });
 
         Fortify::createUsersUsing(CreateNewUser::class);
 
         Fortify::registerView(function () {
-        return view('auth.register');
+            return view('auth.register');
         });
 
         Fortify::loginView(function () {
-        return view('auth.login');
+            return view('auth.login');
         });
 
         Fortify::authenticateUsing(function (Request $request) {
@@ -64,9 +75,9 @@ class FortifyServiceProvider extends ServiceProvider
 
 
         RateLimiter::for('login', function (Request $request) {
-        $email = (string) $request->email;
+            $email = (string) $request->email;
 
-        return Limit::perMinute(10)->by($email . $request->ip());
+            return Limit::perMinute(10)->by($email . $request->ip());
         });
     }
 }
