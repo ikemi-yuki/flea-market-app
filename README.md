@@ -46,7 +46,27 @@ DB_PASSWORD=laravel_pass
 ```
 
 本アプリではStripe Checkoutを使用しています。<br>
-Stripeのテスト用APIキーを `.env` に設定してください。
+Stripeアカウントを作成し、ダッシュボードからテスト用APIキーを取得して、 `.env` の以下に設定してください。
+
+```
+STRIPE_KEY=
+
+STRIPE_SECRET=
+```
+
+Webhookの設定<br>
+Stripe CLIを使用してWebhookをローカル環境へ転送します。<br>
+Stripe CLIをインストール後、以下を実行してください：
+
+```
+stripe listen --forward-to http://localhost/stripe/webhook
+```
+
+実行後に表示されたWebhook Secretを、`.env` の以下に設定してください。
+
+```
+STRIPE_WEBHOOK_SECRET=
+```
 
 #### キー生成
 

@@ -113,6 +113,11 @@ class PurchaseController extends Controller
 
             'mode' => 'payment',
 
+            'metadata' => [
+                'item_id' => $item->id,
+                'user_id' => $user->id,
+            ],
+
             'success_url' => $paymentMethod === Purchase::PAYMENT_METHOD_CARD
             ? route('purchase.success', ['item_id' => $item->id])
             : route('items.index'),
@@ -125,14 +130,6 @@ class PurchaseController extends Controller
 
     public function success($item_id)
     {
-        $item = Item::findOrFail($item_id);
-
-        if ($item->status === Item::STATUS_IN_PROGRESS) {
-            $item->update([
-                'status' => Item::STATUS_SOLD,
-            ]);
-        }
-
         return redirect()->route('items.index');
     }
 }

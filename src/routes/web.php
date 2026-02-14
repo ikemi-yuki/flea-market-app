@@ -10,6 +10,7 @@ use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchaseAddressController;
+use App\Http\Controllers\StripeWebhookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ use App\Http\Controllers\PurchaseAddressController;
 Route::get('/', [ItemController::class, 'index'])->name('items.index')->middleware('profile.completed');
 
 Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('items.detail');
+
+Route::post('/stripe/webhook', [StripeWebhookController::class, 'handle']);
 
 Route::middleware('auth', 'verified', 'profile.completed')->group(function (){
     Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('items.like');
