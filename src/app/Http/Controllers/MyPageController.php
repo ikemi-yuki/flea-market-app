@@ -18,6 +18,7 @@ class MyPageController extends Controller
             $items = Item::whereHas('purchase', function ($q) use ($user) {
                 $q->where('user_id', $user->id);
             })->latest()->get();
+
         } else {
             $items = $user->sellingItems()->get();
         }

@@ -19,7 +19,7 @@ class Category extends Model
             Item::class,
             'item_category',
             'category_id',
-            'item_id')
-                    ->withTimestamps();
+            'item_id'
+        )->withTimestamps();
     }
 }

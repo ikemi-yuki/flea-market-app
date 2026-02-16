@@ -24,6 +24,7 @@ class ItemController extends Controller
                 $query->whereHas('likes', function ($q) {
                     $q->where('user_id', Auth::id());
                 });
+
             } else {
                 $query->whereRaw('1 = 0');
             }

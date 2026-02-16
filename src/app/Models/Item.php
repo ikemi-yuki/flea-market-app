@@ -53,8 +53,8 @@ class Item extends Model
             Category::class,
             'item_category',
             'item_id',
-            'category_id')
-                    ->withTimestamps();
+            'category_id'
+        )->withTimestamps();
     }
 
     public function likes()

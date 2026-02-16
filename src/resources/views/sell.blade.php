@@ -25,7 +25,8 @@
                 <div class="category-group">
                     @foreach ($categories as $category)
                         <label class="category-label">
-                            <input class="category-input" type="checkbox" name="categories[]" value="{{ $category->id }}" {{ collect(old('categories', []))->contains($category->id) ? 'checked' : '' }}>
+                            <input class="category-input" type="checkbox" name="categories[]"
+                            value="{{ $category->id }}" {{ collect(old('categories', []))->contains($category->id) ? 'checked' : '' }}>
                             <span class="category-tag">{{ $category->name }}</span>
                         </label>
                     @endforeach

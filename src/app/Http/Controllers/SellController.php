@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Item;
 use App\Http\Requests\ExhibitionRequest;
@@ -44,8 +43,7 @@ class SellController extends Controller
 
             DB::commit();
 
-            return redirect()
-                ->route('mypage.index');
+            return redirect()->route('mypage.index');
 
         } catch (\Throwable $e) {
             DB::rollBack();
@@ -54,8 +52,7 @@ class SellController extends Controller
                 Storage::disk('public')->delete($path);
             }
 
-            return back()
-                ->withInput();
+            return back()->withInput();
         }
     }
 }

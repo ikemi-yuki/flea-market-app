@@ -9,7 +9,6 @@ use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Profile;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
