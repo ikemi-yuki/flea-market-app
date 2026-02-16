@@ -56,7 +56,7 @@ STRIPE_SECRET=
 
 Webhookの設定<br>
 Stripe CLIを使用してWebhookをローカル環境へ転送します。<br>
-Stripe CLIをインストール後、以下を実行してください：
+Stripe CLIをインストール後、以下を実行してください。
 
 ```
 stripe listen --forward-to http://localhost/stripe/webhook
@@ -66,6 +66,13 @@ stripe listen --forward-to http://localhost/stripe/webhook
 
 ```
 STRIPE_WEBHOOK_SECRET=
+```
+※ 上記の `stripe listen` コマンドは、Webhookを受信するためにアプリ動作中は実行したままにしてください。
+
+テスト用カード番号は以下を使用してください。
+
+```
+4242 4242 4242 4242
 ```
 
 #### キー生成
