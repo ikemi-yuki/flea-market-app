@@ -13,26 +13,25 @@ class ItemController extends Controller
         $tab = $request->query('tab', 'all');
         $keyword = $request->query('keyword');
 
-        $query = Item::query();
+        if ($tab === 'mylist' && !Auth::check()) {
+            $items = collect();
+        } else {
+            $query = Item::query();
 
         if (Auth::check()) {
             $query->where('user_id', '!=', Auth::id());
         }
 
         if ($tab === 'mylist') {
-            if (Auth::check()) {
-                $query->whereHas('likes', function ($q) {
+            $query->whereHas('likes', function ($q) {
                     $q->where('user_id', Auth::id());
                 });
-
-            } else {
-                $query->whereRaw('1 = 0');
             }
-        }
 
-        $items = $query
-            ->keywordSearch($keyword)
-            ->get();
+            $items = $query
+                ->keywordSearch($keyword)
+                ->get();
+        }
 
         return view('index', compact('items', 'tab', 'keyword'));
     }
